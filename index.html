@@ -102,76 +102,7 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
 .btn-clear{padding:11px 20px;background:var(--white);color:var(--text-secondary);border:1px solid #ccc8be;border-radius:7px;font-family:var(--sans);font-size:14px;cursor:pointer;transition:background .15s}
 .btn-clear:hover{background:var(--latte)}
 .toast{display:none;position:fixed;bottom:24px;right:24px;background:var(--black-olive);color:var(--latte);padding:11px 18px;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;box-shadow:0 6px 24px rgba(39,50,33,.3);z-index:999;border-left:3px solid var(--eucalyptus)}
-.success-modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(39, 50, 33, 0.55);
-  z-index: 2000;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-}
-
-.success-modal {
-  background: var(--white);
-  border-radius: 12px;
-  max-width: 440px;
-  width: 100%;
-  padding: 28px 30px;
-  box-shadow: 0 18px 50px rgba(39,50,33,.28);
-  border-top: 4px solid var(--eucalyptus);
-  text-align: center;
-  animation: fadeIn .2s ease;
-}
-
-.success-icon {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: #EEF6EE;
-  color: #4a9460;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 14px;
-}
-
-.success-modal h3 {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 24px;
-  color: var(--black-olive);
-  margin-bottom: 8px;
-}
-
-.success-modal p {
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.success-modal button {
-  padding: 10px 22px;
-  background: var(--atlantic);
-  color: var(--white);
-  border: none;
-  border-radius: 7px;
-  font-family: var(--sans);
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.success-modal button:hover {
-  background: #27617a;
-}
-  
-  
-  .pdf-export #export-actions-card {
+.pdf-export #export-actions-card {
   display: none !important;
 }
 
@@ -974,13 +905,13 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
   <div class="actions">
 
     
-<button class="btn-export" id="submit-btn" onclick="submitToSharePoint()">
-  Submit
+<button class="btn-export" onclick="exportPDF()">
+  Export to PDF
 </button>
 
 <button class="btn-export" onclick="submitToSharePoint()">
   Submit to SharePoint
-</button
+</button>
 
 <button class="btn-clear" onclick="clearForm()">
   Clear form
@@ -997,18 +928,7 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
   </div>
 </div>
 
-<div class="toast" id="toast">&#10003; PDF exported successfully</div>
-
-<div class="success-modal-overlay" id="success-modal">
-  <div class="success-modal">
-    <div class="success-icon">✓</div>
-    <h3>Submission successful</h3>
-    <p>
-      Your assessment has been submitted. You can still export a PDF copy for your records if needed.
-    </p>
-    <button onclick="closeSubmissionModal()">Close</button>
-  </div>
-</div>
+<div class="toast" id="toast">&#10003; Exported successfully</div>
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -1408,12 +1328,6 @@ async function exportPDF() {
   }
 }
 
-function getSupportChecks(){
-  const items=[];
-  for(let i=1;i<=10;i++){
-    const cb=document.getElementById('ts'+i);
-    if(cb
-
 // ============ REFERRAL TRIGGER TABS ============
 function showSpec(spec){
   document.querySelectorAll('.rt-panel').forEach(p=>p.style.display='none');
@@ -1440,105 +1354,83 @@ function clearForm(){
   document.getElementById('support-requested-list').innerHTML='';
 }
 
-function closeSubmissionModal() {
-  document.getElementById("success-modal").style.display = "none";
-}
-
-async function submitToSharePoint() {
-
-  const submitBtn = document.getElementById("submit-btn");
-  submitBtn.disabled = true;
-  submitBtn.textContent = "Submitting...";
+function submitToSharePoint() {
 
   const scoreText = document.getElementById("sv").textContent;
   const score = parseInt(scoreText.replace('%','')) || 0;
 
-  const endpoint = "https://script.google.com/macros/s/AKfycbwRWTYPM-M_5FGsu3BOr3sfBpqILAHBXu0OkBkqO-glhfPXaVmpyc68hui1daeSs89-/exec";
-
-  const data = new URLSearchParams();
+  const form = document.createElement("form");
+  form.method = "POST";
+  form.action = "https://script.google.com/macros/s/AKfycbwRWTYPM-M_5FGsu3BOr3sfBpqILAHBXu0OkBkqO-glhfPXaVmpyc68hui1daeSs89-/exec";
 
   function addField(name, value) {
-    data.append(name, value || "");
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = name;
+    input.value = value;
+    form.appendChild(input);
   }
 
   // Core
   addField("Title", document.getElementById("mgr").value || "No Name");
-  addField("PracticeName", document.getElementById("pname").value);
-  addField("PracticeCode", document.getElementById("cn").value);
-  addField("Specialty", document.getElementById("sp").value);
+  addField("PracticeName", document.getElementById("pname").value || "");
+  addField("PracticeCode", document.getElementById("cn").value || "");
+  addField("Specialty", document.getElementById("sp").value || "");
   addField("TotalScore", score);
 
   // Workflow
-  addField("w_exam", document.getElementById("w_exam").value);
-  addField("w_perio_new", document.getElementById("w_perio_new").value);
-  addField("w_perio_recall", document.getElementById("w_perio_recall").value);
-  addField("w_diagnosis", document.getElementById("w_diagnosis").value);
-  addField("w_referral", document.getElementById("w_referral").value);
-  addField("w_huddle", document.getElementById("w_huddle").value);
+  addField("w_exam", document.getElementById("w_exam").value || "");
+  addField("w_perio_new", document.getElementById("w_perio_new").value || "");
+  addField("w_perio_recall", document.getElementById("w_perio_recall").value || "");
+  addField("w_diagnosis", document.getElementById("w_diagnosis").value || "");
+  addField("w_referral", document.getElementById("w_referral").value || "");
+  addField("w_huddle", document.getElementById("w_huddle").value || "");
 
   // Clinical
-  addField("m_bac", document.getElementById("m_bac").value);
-  addField("m_str", document.getElementById("m_str").value);
-  addField("m_fun", document.getElementById("m_fun").value);
-  addField("m_est", document.getElementById("m_est").value);
-  addField("m_comfort", document.getElementById("m_comfort").value);
-  addField("m_context", document.getElementById("m_context").value);
+  addField("m_bac", document.getElementById("m_bac").value || "");
+  addField("m_str", document.getElementById("m_str").value || "");
+  addField("m_fun", document.getElementById("m_fun").value || "");
+  addField("m_est", document.getElementById("m_est").value || "");
+  addField("m_comfort", document.getElementById("m_comfort").value || "");
+  addField("m_context", document.getElementById("m_context").value || "");
 
   // Treatment Planning
-  addField("tp_4d", document.getElementById("tp_4d").value);
-  addField("tp_doc", document.getElementById("tp_doc").value);
-  addField("tp_culture", document.getElementById("tp_culture").value);
+  addField("tp_4d", document.getElementById("tp_4d").value || "");
+  addField("tp_doc", document.getElementById("tp_doc").value || "");
+  addField("tp_culture", document.getElementById("tp_culture").value || "");
 
   // Handoff
-  addField("ho_protocol", document.getElementById("ho_protocol").value);
-  addField("ho_formal", document.getElementById("ho_formal").value);
-  addField("ho_reinforce", document.getElementById("ho_reinforce").value);
-  addField("ho_seed", document.getElementById("ho_seed").value);
+  addField("ho_protocol", document.getElementById("ho_protocol").value || "");
+  addField("ho_formal", document.getElementById("ho_formal").value || "");
+  addField("ho_reinforce", document.getElementById("ho_reinforce").value || "");
+  addField("ho_seed", document.getElementById("ho_seed").value || "");
 
   // Infrastructure
-  addField("i_assist", document.getElementById("i_assist").value);
-  addField("i_records", document.getElementById("i_records").value);
-  addField("i_digital", document.getElementById("i_digital").value);
-  addField("i_supplies", document.getElementById("i_supplies").value);
-  addField("i_equip", document.getElementById("i_equip").value);
+  addField("i_assist", document.getElementById("i_assist").value || "");
+  addField("i_records", document.getElementById("i_records").value || "");
+  addField("i_digital", document.getElementById("i_digital").value || "");
+  addField("i_supplies", document.getElementById("i_supplies").value || "");
+  addField("i_equip", document.getElementById("i_equip").value || "");
 
   // Admin
-  addField("a_admin", document.getElementById("a_admin").value);
-  addField("a_recall", document.getElementById("a_recall").value);
-  addField("a_booking", document.getElementById("a_booking").value);
-  addField("a_ar", document.getElementById("a_ar").value);
-  addField("a_noshow", document.getElementById("a_noshow").value);
+  addField("a_admin", document.getElementById("a_admin").value || "");
+  addField("a_recall", document.getElementById("a_recall").value || "");
+  addField("a_booking", document.getElementById("a_booking").value || "");
+  addField("a_ar", document.getElementById("a_ar").value || "");
+  addField("a_noshow", document.getElementById("a_noshow").value || "");
 
   // Training
-  addField("t_gp", document.getElementById("t_gp").value);
-  addField("t_rdh", document.getElementById("t_rdh").value);
-  addField("t_admin", document.getElementById("t_admin").value);
-  addField("t_comm", document.getElementById("t_comm").value);
-  addField("t_pillars", document.getElementById("t_pillars").value);
-  addField("t_huddle", document.getElementById("t_huddle").value);
-  addField("t_handoff", document.getElementById("t_handoff").value);
+  addField("t_gp", document.getElementById("t_gp").value || "");
+  addField("t_rdh", document.getElementById("t_rdh").value || "");
+  addField("t_admin", document.getElementById("t_admin").value || "");
+  addField("t_comm", document.getElementById("t_comm").value || "");
+  addField("t_pillars", document.getElementById("t_pillars").value || "");
+  addField("t_huddle", document.getElementById("t_huddle").value || "");
 
-  // Free text / support requested
-  addField("t_done", document.getElementById("t_done").value);
-  addField("SupportRequested", getSupportChecks());
+  document.body.appendChild(form);
+  form.submit();
 
-  try {
-    await fetch(endpoint, {
-      method: "POST",
-      mode: "no-cors",
-      body: data
-    });
-
-    document.getElementById("success-modal").style.display = "flex";
-
-  } catch (err) {
-    console.error(err);
-    alert("Submission failed. Please try again.");
-  } finally {
-    submitBtn.disabled = false;
-    submitBtn.textContent = "Submit";
-  }
+  alert("✅ Submitted successfully");
 }
 </script>
 </body>
-</html>
