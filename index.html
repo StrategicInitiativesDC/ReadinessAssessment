@@ -1374,31 +1374,33 @@ function clearForm(){
   document.getElementById('support-requested-list').innerHTML='';
 }
 
-async function submitToSharePoint() {
+unction submitToSharePoint() {
 
   const scoreText = document.getElementById("sv").textContent;
   const score = parseInt(scoreText.replace('%','')) || 0;
 
-  const data = {
-    Title: document.getElementById("mgr").value || "No Name",
-    PracticeName: document.getElementById("pname").value || "",
-    PracticeCode: document.getElementById("cn").value || "",
-    Specialty: document.getElementById("sp").value || "",
-    TotalScore: score
-  };
+  const form = document.createElement("form");
+  form.method = "POST";
+  form.action = "https://script.google.com/macros/s/AKfycbx-8UZSY81ewkfnr2hKGOXl6xmXYfViJzagJw298cAbgHZQEePzgXayRN4VQvCeSBoK/exec";
 
-  try {
-    await fetch("https://script.google.com/macros/s/AKfycbzXg91o4Rqy2O5riCZf3MWALTtK5UgYJVHHyovU2dK3FJkOZhKL6TMyeYFq758bv1ck/exec", {
-      method: "POST",
-      body: JSON.stringify(data)
-    });
-
-    alert("✅ Submitted successfully");
-
-  } catch (err) {
-    console.error(err);
-    alert("❌ Submission failed");
+  function addField(name, value) {
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = name;
+    input.value = value;
+    form.appendChild(input);
   }
+
+  addField("Title", document.getElementById("mgr").value || "No Name");
+  addField("PracticeName", document.getElementById("pname").value || "");
+  addField("PracticeCode", document.getElementById("cn").value || "");
+  addField("Specialty", document.getElementById("sp").value || "");
+  addField("TotalScore", score);
+
+  document.body.appendChild(form);
+  form.submit();
+
+  alert("✅ Submitted successfully");
 }
 </script>
 </body>
