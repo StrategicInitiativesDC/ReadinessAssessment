@@ -1373,20 +1373,6 @@ function clearForm(){
   document.getElementById('support-requested-block').style.display='none';
   document.getElementById('support-requested-list').innerHTML='';
 }
-async function getDigest() {
-  const res = await fetch("/_api/contextinfo", {
-    method: "POST",
-    headers: {
-      "Accept": "application/json;odata=verbose"
-    }
-  });
-
-  const data = await res.json();
-  document.getElementById("__REQUESTDIGEST").value =
-    data.d.GetContextWebInformation.FormDigestValue;
-}
-
-getDigest();
 
 async function submitToSharePoint() {
 
@@ -1400,6 +1386,25 @@ async function submitToSharePoint() {
     Specialty: document.getElementById("sp").value || "",
     TotalScore: score
   };
+
+  try {
+    const res = await fetch("https://default7324a5cffdb64f748cc867265c8249.71.environment.api.powerplatform.com/powerautomate/automations/direct/workflows/54163cf4be5948a386d2380d2ae11b80/triggers/manual/paths/invoke?api-version=1", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (!res.ok) throw new Error("Request failed");
+
+    alert("✅ Submitted successfully");
+
+  } catch (err) {
+    console.error(err);
+    alert("❌ Submission failed");
+  }
+};
 
   try {
     const res = await fetch("PASTE_YOUR_FLOW_URL_HERE", {
