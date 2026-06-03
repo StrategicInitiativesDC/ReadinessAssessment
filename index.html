@@ -102,6 +102,15 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
 .btn-clear{padding:11px 20px;background:var(--white);color:var(--text-secondary);border:1px solid #ccc8be;border-radius:7px;font-family:var(--sans);font-size:14px;cursor:pointer;transition:background .15s}
 .btn-clear:hover{background:var(--latte)}
 .toast{display:none;position:fixed;bottom:24px;right:24px;background:var(--black-olive);color:var(--latte);padding:11px 18px;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;box-shadow:0 6px 24px rgba(39,50,33,.3);z-index:999;border-left:3px solid var(--eucalyptus)}
+.pdf-export #export-actions-card {
+  display: none !important;
+}
+
+.pdf-export .toast {
+  display: none !important;
+}
+
+  
 .footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid #ddd9ce;display:flex;align-items:center;gap:10px}
 .shine-ft{width:16px;height:16px;opacity:.5}
 .footer p{font-size:12px;color:var(--text-muted)}
@@ -892,10 +901,12 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
   </div>
 
   <!-- ============ ACTIONS ============ -->
-  <div class="card">
-    <div class="actions">
-      <button class="btn-export" onclick="exportXL()">
-  Export to Excel
+<div class="card" id="export-actions-card">
+  <div class="actions">
+
+    
+<button class="btn-export" onclick="exportPDF()">
+  Export to PDF
 </button>
 
 <button class="btn-export" onclick="submitToSharePoint()">
@@ -905,6 +916,9 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
 <button class="btn-clear" onclick="clearForm()">
   Clear form
 </button>
+
+
+    
     </div>
   </div>
 
@@ -915,6 +929,9 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
 </div>
 
 <div class="toast" id="toast">&#10003; Exported successfully</div>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
 // ============ SCORING ============
@@ -1239,115 +1256,78 @@ function buildPriorityActions(){
 }
 
 // ============ EXPORT ============
-function exportXL(){
-  const rows=[
-    ['Dentalcorp - Specialist Readiness Assessment'],
-    ['Generated',new Date().toLocaleDateString()],
-    [],
-    ['CLINIC INFORMATION'],
-    ['Name',v('mgr')],
-    ['Practice Code',v('cn')],
-    ['Practice Name',v('pname')],
-    ['Specialty',v('sp')],
-    [],
-    ['SECTION 1 - WORKFLOW'],
-    ['New patient exam structure',t('w_exam')],
-    ['Perio charting - new patient exam',t('w_perio_new')],
-    ['Perio charting - recall exam',t('w_perio_recall')],
-    ['Comprehensive diagnosis documented',t('w_diagnosis')],
-    ['Internal referral workflow',t('w_referral')],
-    ['Morning huddle for specialist candidates',t('w_huddle')],
 
-    [],
-    ['SECTION 2 - CLINICAL LENS & DIAGNOSIS CULTURE'],
-    ['Bacterial focus area assessed consistently',t('m_bac')],
-    ['Structural focus area assessed consistently',t('m_str')],
-    ['Functional focus area assessed consistently',t('m_fun')],
-    ['Esthetic focus area assessed consistently',t('m_est')],
-    ['GPs comfortable initiating specialty conversations',t('m_comfort')],
-    ['Clinical context traveling with referral',t('m_context')],
-    [],
-    ['SECTION 2B - TREATMENT PLANNING (4 Ds)'],
-    ['Four-step framework followed by GPs',t('tp_4d')],
-    ['Treatment planning documented before presenting',t('tp_doc')],
-    ['Culture of presenting all options including specialty',t('tp_culture')],
+async function exportPDF() {
+  update();
 
-    [],
-    ['SECTION 3 - RECALL HANDOFF (HYGIENIST TO DENTIST)'],
-    ['Formal in-room handoff at every recall',t('ho_formal')],
-    ['Dentist reinforces hygienist findings',t('ho_reinforce')],
-    ['Specialty triggers seeded during hygiene appointment',t('ho_seed')],
-    ['Standardized handoff protocol in place',t('ho_protocol')],
-    [],
-    ['SECTION 4 - INFRASTRUCTURE'],
+  const { jsPDF } = window.jspdf;
+  const pageElement = document.querySelector('.page');
 
+  document.body.classList.add('pdf-export');
 
-    ['Trained dedicated assistant',t('i_assist')],
-    ['Records and imaging prepared in advance',t('i_records')],
-    ['Digital records on screen in operatories',t('i_digital')],
-    ['Sundries and supplies stocked for specialist days',t('i_supplies')],
-    [],
-    ['SECTION 5 - ADMIN & RECALL MANAGEMENT'],
-    ['Dedicated admin for specialist schedule',t('a_admin')],
-
-    ['Recall management strength',t('a_recall')],
-
-    ['Admin understands specialist booking requirements',t('a_booking')],
-    ['AR managed including specialist billing',t('a_ar')],
-    ['Process for cancelled/no-show re-engagement',t('a_noshow')],
-    [],
-    ['SECTION 6 - TRAINING & SUPPORT NEEDS'],
-    ['GPs need referral trigger training',t('t_gp')],
-    ['Hygiene team needs specialty flagging coaching',t('t_rdh')],
-    ['Admin needs specialist booking training',t('t_admin')],
-    ['Team needs patient communication/case acceptance support',t('t_comm')],
-    ['Four focus area coaching needed',t('t_pillars')],
-    ['Morning huddle structure support needed',t('t_huddle')],
-    ['Training already completed',v('t_done')],
-    ['Additional support requested',getSupportChecks()],
-    [],
-    ['SECTION 7 - REFERRAL TRIGGERS REFERENCE'],
-    ['Note','See the Referral Triggers by Specialty section for team-facing clinical trigger checklists organized by the four diagnostic focus areas (Bacterial, Structural, Functional, Esthetic).'],
-    [],
-    ['READINESS SCORE'],
-    ['Score',document.getElementById('sv').textContent],
-    ['Points',document.getElementById('ss').textContent],
-    ['Assessment',document.getElementById('slbl').textContent],
-    [],
-    ['PRIORITY ACTIONS'],
-    ...getPriorityRows(),
-  ];
-  function getPriorityRows(){
-    const rows=[];
-    const items=document.querySelectorAll('#priority-list > div');
-    if(!items.length){ rows.push(['No critical gaps identified.']); return rows; }
-    items.forEach(el=>{
-      const text=el.textContent.replace(/^\d+\.\s*/,'').trim();
-      const priority=el.style.borderLeftColor==='rgb(192, 57, 43)'?'Critical':'Recommended';
-      rows.push([priority, text]);
+  try {
+    const canvas = await html2canvas(pageElement, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#F5F2EA',
+      windowWidth: pageElement.scrollWidth,
+      scrollY: 0
     });
-    return rows;
-  }
 
-  const wb=XLSX.utils.book_new();
-  const ws=XLSX.utils.aoa_to_sheet(rows);
-  ws['!cols']=[{wch:45},{wch:70}];
-  XLSX.utils.book_append_sheet(wb,ws,'Readiness Assessment');
-  XLSX.writeFile(wb,'specialist-readiness-assessment.xlsx');
-  const toast=document.getElementById('toast');
-  toast.style.display='block';
-  setTimeout(()=>toast.style.display='none',2500);
-}
-function v(id){const el=document.getElementById(id);return el?el.value:'';}
-function t(id){const el=document.getElementById(id);return el&&el.selectedIndex>0?el.options[el.selectedIndex].text:'';}
-function getSupportChecks(){
-  const items=[];
-  for(let i=1;i<=10;i++){
-    const cb=document.getElementById('ts'+i);
-    if(cb&&cb.checked) items.push(cb.parentElement.textContent.trim());
+    const imgData = canvas.toDataURL('image/png');
+
+    const pdf = new jsPDF('p', 'pt', 'letter');
+
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+
+    const margin = 24;
+    const usableWidth = pageWidth - margin * 2;
+    const usableHeight = pageHeight - margin * 2;
+
+    const imgWidth = usableWidth;
+    const imgHeight = canvas.height * imgWidth / canvas.width;
+
+    let heightLeft = imgHeight;
+    let position = margin;
+
+    pdf.addImage(imgData, 'PNG', margin, position, imgWidth, imgHeight);
+    heightLeft -= usableHeight;
+
+    while (heightLeft > 0) {
+      pdf.addPage();
+      position = margin - (imgHeight - heightLeft);
+      pdf.addImage(imgData, 'PNG', margin, position, imgWidth, imgHeight);
+      heightLeft -= usableHeight;
+    }
+
+    const practiceCode = document.getElementById('cn').value || 'practice';
+    const practiceName = document.getElementById('pname').value || 'specialist-readiness-assessment';
+
+    const fileName = `${practiceCode}-${practiceName}`
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+
+    pdf.save(`${fileName}.pdf`);
+
+    const toast = document.getElementById('toast');
+    toast.textContent = '✓ PDF exported successfully';
+    toast.style.display = 'block';
+
+    setTimeout(() => {
+      toast.style.display = 'none';
+      toast.textContent = '✓ Exported successfully';
+    }, 2500);
+
+  } catch (err) {
+    console.error(err);
+    alert('PDF export failed. Please use your browser print option and select “Save as PDF”.');
+  } finally {
+    document.body.classList.remove('pdf-export');
   }
-  return items.join('; ');
 }
+
 // ============ REFERRAL TRIGGER TABS ============
 function showSpec(spec){
   document.querySelectorAll('.rt-panel').forEach(p=>p.style.display='none');
