@@ -1401,17 +1401,24 @@ async function submitToSharePoint() {
     TotalScore: score
   };
 
-  const digest = document.getElementById("__REQUESTDIGEST").value;
+  try {
+    const res = await fetch("PASTE_YOUR_FLOW_URL_HERE", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
 
- await fetch("/sites/ClinicalExcellenceandProgramStrategy188/_api/web/lists/getbytitle('Specialist Readiness Submissions')/items", {
-    method: "POST",
-    headers: {
-      "Accept": "application/json;odata=verbose",
-      "Content-Type": "application/json;odata=verbose",
-      "X-RequestDigest": digest
-    },
-    body: JSON.stringify(data)
-  });
+    if (!res.ok) throw new Error("Failed");
+
+    alert("✅ Submitted successfully");
+
+  } catch (err) {
+    console.error(err);
+    alert("❌ Submission failed");
+  }
+});
 
   alert("Submitted successfully");
 }
