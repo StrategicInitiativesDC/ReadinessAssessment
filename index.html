@@ -1388,15 +1388,10 @@ async function submitToSharePoint() {
   };
 
   try {
-    const res = await fetch("https://script.google.com/macros/s/AKfycbzKPhzlV1M85PaNVJ5tMyAh3ehbR6Pzy1_xGYL-FoviM658gGSfbz6I57Jj2bUF5dFX/exec", {
+    await fetch("https://script.google.com/macros/s/AKfycbzXg91o4Rqy2O5riCZf3MWALTtK5UgYJVHHyovU2dK3FJkOZhKL6TMyeYFq758bv1ck/exec", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
       body: JSON.stringify(data)
     });
-
-    if (!res.ok) throw new Error("Request failed");
 
     alert("✅ Submitted successfully");
 
