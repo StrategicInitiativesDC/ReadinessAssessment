@@ -1404,28 +1404,6 @@ async function submitToSharePoint() {
     console.error(err);
     alert("❌ Submission failed");
   }
-};
-
-  try {
-    const res = await fetch("PASTE_YOUR_FLOW_URL_HERE", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    });
-
-    if (!res.ok) throw new Error("Failed");
-
-    alert("✅ Submitted successfully");
-
-  } catch (err) {
-    console.error(err);
-    alert("❌ Submission failed");
-  }
-});
-
-  alert("Submitted successfully");
 }
 </script>
 </body>
