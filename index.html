@@ -1383,6 +1383,15 @@ unction submitToSharePoint() {
   form.method = "POST";
   form.action = "https://script.google.com/macros/s/AKfycbx-8UZSY81ewkfnr2hKGOXl6xmXYfViJzagJw298cAbgHZQEePzgXayRN4VQvCeSBoK/exec";
 
+  function submitToSharePoint() {
+
+  const scoreText = document.getElementById("sv").textContent;
+  const score = parseInt(scoreText.replace('%','')) || 0;
+
+  const form = document.createElement("form");
+  form.method = "POST";
+  form.action = "https://script.google.com/macros/s/AKfycbx-8UZSY81ewkfnr2hKGOXl6xmXYfViJzagJw298cAbgHZQEePzgXayRN4VQvCeSBoK/exec";
+
   function addField(name, value) {
     const input = document.createElement("input");
     input.type = "hidden";
@@ -1391,11 +1400,61 @@ unction submitToSharePoint() {
     form.appendChild(input);
   }
 
+  // Core
   addField("Title", document.getElementById("mgr").value || "No Name");
   addField("PracticeName", document.getElementById("pname").value || "");
   addField("PracticeCode", document.getElementById("cn").value || "");
   addField("Specialty", document.getElementById("sp").value || "");
   addField("TotalScore", score);
+
+  // Workflow
+  addField("w_exam", document.getElementById("w_exam").value || "");
+  addField("w_perio_new", document.getElementById("w_perio_new").value || "");
+  addField("w_perio_recall", document.getElementById("w_perio_recall").value || "");
+  addField("w_diagnosis", document.getElementById("w_diagnosis").value || "");
+  addField("w_referral", document.getElementById("w_referral").value || "");
+  addField("w_huddle", document.getElementById("w_huddle").value || "");
+
+  // Clinical
+  addField("m_bac", document.getElementById("m_bac").value || "");
+  addField("m_str", document.getElementById("m_str").value || "");
+  addField("m_fun", document.getElementById("m_fun").value || "");
+  addField("m_est", document.getElementById("m_est").value || "");
+  addField("m_comfort", document.getElementById("m_comfort").value || "");
+  addField("m_context", document.getElementById("m_context").value || "");
+
+  // Treatment Planning
+  addField("tp_4d", document.getElementById("tp_4d").value || "");
+  addField("tp_doc", document.getElementById("tp_doc").value || "");
+  addField("tp_culture", document.getElementById("tp_culture").value || "");
+
+  // Handoff
+  addField("ho_protocol", document.getElementById("ho_protocol").value || "");
+  addField("ho_formal", document.getElementById("ho_formal").value || "");
+  addField("ho_reinforce", document.getElementById("ho_reinforce").value || "");
+  addField("ho_seed", document.getElementById("ho_seed").value || "");
+
+  // Infrastructure
+  addField("i_assist", document.getElementById("i_assist").value || "");
+  addField("i_records", document.getElementById("i_records").value || "");
+  addField("i_digital", document.getElementById("i_digital").value || "");
+  addField("i_supplies", document.getElementById("i_supplies").value || "");
+  addField("i_equip", document.getElementById("i_equip").value || "");
+
+  // Admin
+  addField("a_admin", document.getElementById("a_admin").value || "");
+  addField("a_recall", document.getElementById("a_recall").value || "");
+  addField("a_booking", document.getElementById("a_booking").value || "");
+  addField("a_ar", document.getElementById("a_ar").value || "");
+  addField("a_noshow", document.getElementById("a_noshow").value || "");
+
+  // Training
+  addField("t_gp", document.getElementById("t_gp").value || "");
+  addField("t_rdh", document.getElementById("t_rdh").value || "");
+  addField("t_admin", document.getElementById("t_admin").value || "");
+  addField("t_comm", document.getElementById("t_comm").value || "");
+  addField("t_pillars", document.getElementById("t_pillars").value || "");
+  addField("t_huddle", document.getElementById("t_huddle").value || "");
 
   document.body.appendChild(form);
   form.submit();
