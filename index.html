@@ -1355,7 +1355,30 @@ function clearForm(){
   document.getElementById('support-requested-block').style.display='none';
   document.getElementById('support-requested-list').innerHTML='';
 }
+  
+function openEmailModal() {
+  document.getElementById('emailModal').style.display = 'flex';
+}
 
+function closeModal() {
+  document.getElementById('emailModal').style.display = 'none';
+}
+
+function confirmSubmit() {
+  const email = document.getElementById("userEmail").value;
+  
+  if (!email) {
+    alert("Please enter your email");
+    return;
+  }
+
+  document.getElementById('emailModal').style.display = 'none';
+
+  submitToSharePoint(email);
+}
+
+
+  
 function submitToSharePoint() {
 
   const scoreText = document.getElementById("sv").textContent;
