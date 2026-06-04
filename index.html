@@ -909,7 +909,7 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
   Export to PDF
 </button>
 
-<button class="btn-export" onclick="submitToSharePoint()">
+<button class="btn-export" onclick="openEmailModal()">
   Submit to SharePoint
 </button>
 
@@ -1443,4 +1443,15 @@ setTimeout(() => {
 }, 2500);
 }
 </script>
+  
+<div id="emailModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:1000;">
+  <div style="background:white; padding:20px; border-radius:8px; width:300px;">
+    <h3 style="margin-bottom:10px;">Enter your email</h3>
+    <input type="email" id="userEmail" placeholder="your@email.com" style="width:100%; padding:8px; margin-bottom:10px;">
+    <button onclick="confirmSubmit()" style="margin-right:10px;">Submit</button>
+    <button onclick="closeModal()">Cancel</button>
+  </div>
+</div>
+
+  
 </body>
