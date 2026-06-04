@@ -1379,7 +1379,7 @@ function confirmSubmit() {
 
 
   
-function submitToSharePoint() {
+function submitToSharePoint(userEmail) {
 
   const scoreText = document.getElementById("sv").textContent;
   const score = parseInt(scoreText.replace('%','')) || 0;
@@ -1403,7 +1403,8 @@ function submitToSharePoint() {
   addField("PracticeCode", document.getElementById("cn").value || "");
   addField("Specialty", document.getElementById("sp").value || "");
   addField("TotalScore", score);
-
+addField("UserEmail", userEmail || "");
+  
   // Workflow
   addField("w_exam", document.getElementById("w_exam").value || "");
   addField("w_perio_new", document.getElementById("w_perio_new").value || "");
