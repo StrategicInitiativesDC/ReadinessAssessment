@@ -929,6 +929,8 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
 </div>
 
 <div class="toast" id="toast">&#10003; Exported successfully</div>
+
+<iframe name="hiddenFrame" style="display:none;"></iframe>
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -1361,6 +1363,7 @@ function submitToSharePoint() {
 
   const form = document.createElement("form");
   form.method = "POST";
+  form.target = "hiddenFrame";
   form.action = "https://script.google.com/macros/s/AKfycbwRWTYPM-M_5FGsu3BOr3sfBpqILAHBXu0OkBkqO-glhfPXaVmpyc68hui1daeSs89-/exec";
 
   function addField(name, value) {
@@ -1430,7 +1433,14 @@ function submitToSharePoint() {
   document.body.appendChild(form);
   form.submit();
 
-  alert("✅ Submitted successfully");
+  const toast = document.getElementById('toast');
+toast.textContent = '✓ Submitted successfully';
+toast.style.display = 'block';
+
+setTimeout(() => {
+  toast.style.display = 'none';
+  toast.textContent = '✓ Exported successfully';
+}, 2500);
 }
 </script>
 </body>
