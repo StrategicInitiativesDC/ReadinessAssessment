@@ -1407,7 +1407,6 @@ function submitToSharePoint(userEmail) {
   addField("PracticeCode", document.getElementById("cn").value || "");
   addField("Specialty", document.getElementById("sp").value || "");
   addField("TotalScore", score);
-  addField("PDFData", window.generatedPDF || "");
 addField("UserEmail", userEmail || "");
   
   // Workflow
