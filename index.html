@@ -1374,8 +1374,9 @@ function confirmSubmit() {
 
   document.getElementById('emailModal').style.display = 'none';
 
+exportPDF().then(() => {
   submitToSharePoint(email);
-}
+});
 
 
   
