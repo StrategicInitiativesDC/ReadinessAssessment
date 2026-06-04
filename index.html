@@ -1312,6 +1312,7 @@ async function exportPDF() {
       .replace(/^-|-$/g, '');
 
     pdf.save(`${fileName}.pdf`);
+    return pdf.output('datauristring');
 
     const toast = document.getElementById('toast');
     toast.textContent = '✓ PDF exported successfully';
