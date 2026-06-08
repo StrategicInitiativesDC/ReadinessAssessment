@@ -1316,10 +1316,8 @@ async function exportPDF() {
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-|-$/g, '');
 
-    pdf.save(`${fileName}.pdf`);
-    const pdfData = pdf.output('datauristring');
-await uploadPDFToDrive(pdfData);
-    
+   pdf.save(`${fileName}.pdf`);
+const pdfData = pdf.output('datauristring');
 
 window.generatedPDF = pdfData;
 
