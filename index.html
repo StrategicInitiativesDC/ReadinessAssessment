@@ -1478,17 +1478,6 @@ setTimeout(() => {
 }, 2500);
 }
 
- async function uploadPDFToDrive(pdfData) {
-  const response = await fetch("https://script.google.com/macros/s/AKfycbzWp7g0DhXUHL6_-Y-oFlcy6FEQUodESwg3WExIFDF3xPyQpoSlYznG6dxLxZgcP3M9/exec", {
-    method: "POST",
-    body: JSON.stringify({
-      type: "uploadPDF",
-      pdfData: pdfData,
-      practiceCode: document.getElementById("cn").value || "practice"
-    })
-  });
-} 
-
 
 </script>
   
