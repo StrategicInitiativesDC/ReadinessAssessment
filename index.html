@@ -1313,7 +1313,13 @@ async function exportPDF(submissionId) {
 
     pdf.save(`${fileName}.pdf`);
     const pdfData = pdf.output('datauristring');
-await uploadPDFToDrive(pdfData, submissionId);
+    
+try {
+  await uploadPDFToDrive(pdfData, submissionId);
+  console.log("PDF upload succeeded");
+} catch (err) {
+  console.error("PDF upload failed", err);
+}
     
 window.generatedPDF = pdfData;
 
@@ -1393,10 +1399,20 @@ async function confirmSubmit() {
   document.getElementById('emailModal').style.display = 'none';
 
   const submissionId = generateSubmissionId();
+  console.log("confirmSubmit started");
+  console.log("submissionId:", submissionId);
 
-  await exportPDF(submissionId);
- 
+  try {
+    await exportPDF(submissionId);
+    console.log("exportPDF completed");
+  } catch (err) {
+    console.error("exportPDF failed", err);
+  }
+
+  console.log("calling submitToSharePoint");
+  submitToSharePoint(email, submissionId);
 }
+
 
   
 function submitToSharePoint(userEmail, submissionId) {
@@ -1505,6 +1521,14 @@ async function uploadPDFToDrive(pdfData, submissionId) {
   }
 }
 
+  window.addEventListener("load", function () {
+  const iframe = document.querySelector('iframe[name="hiddenFrame"]');
+  if (iframe) {
+    iframe.addEventListener("load", function () {
+      console.log("hiddenFrame received a response");
+    });
+  }
+});
 
 </script>
   
