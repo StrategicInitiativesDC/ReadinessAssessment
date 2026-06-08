@@ -1259,7 +1259,7 @@ function buildPriorityActions(){
 
 // ============ EXPORT ============
 
-async function exportPDF(submissionId) {
+async function exportPDF() {
   update();
 
   const { jsPDF } = window.jspdf;
@@ -1313,27 +1313,13 @@ async function exportPDF(submissionId) {
 
     pdf.save(`${fileName}.pdf`);
     const pdfData = pdf.output('datauristring');
-    
-try {
-  await uploadPDFToDrive(pdfData, submissionId);
-  console.log("PDF upload succeeded");
-} catch (err) {
-  console.error("PDF upload failed", err);
-}
+await uploadPDFToDrive(pdfData);
     
 window.generatedPDF = pdfData;
-
-const toast = document.getElementById('toast');
-toast.textContent = '✓ PDF exported successfully';
-toast.style.display = 'block';
-
-setTimeout(() => {
-  toast.style.display = 'none';
-  toast.textContent = '✓ Exported successfully';
-}, 2500);
-
 return pdfData;
 
+    const toast = document.getElementById('toast');
+    toast.textContent = '✓ PDF exported successfully';
     toast.style.display = 'block';
 
     setTimeout(() => {
@@ -1382,15 +1368,11 @@ function openEmailModal() {
 function closeModal() {
   document.getElementById('emailModal').style.display = 'none';
 }
-  
-function generateSubmissionId() {
-  return 'sub-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
-}
 
 
 async function confirmSubmit() {
   const email = document.getElementById("userEmail").value;
-
+  
   if (!email) {
     alert("Please enter your email");
     return;
@@ -1398,24 +1380,12 @@ async function confirmSubmit() {
 
   document.getElementById('emailModal').style.display = 'none';
 
-  const submissionId = generateSubmissionId();
-  console.log("confirmSubmit started");
-  console.log("submissionId:", submissionId);
-
-  try {
-    await exportPDF(submissionId);
-    console.log("exportPDF completed");
-  } catch (err) {
-    console.error("exportPDF failed", err);
-  }
-
-  console.log("calling submitToSharePoint");
-  submitToSharePoint(email, submissionId);
+  await exportPDF();
+  submitToSharePoint(email);
 }
 
-
   
-function submitToSharePoint(userEmail, submissionId) {
+function submitToSharePoint(userEmail) {
 
   const scoreText = document.getElementById("sv").textContent;
   const score = parseInt(scoreText.replace('%','')) || 0;
@@ -1440,7 +1410,6 @@ function submitToSharePoint(userEmail, submissionId) {
   addField("Specialty", document.getElementById("sp").value || "");
   addField("TotalScore", score);
 addField("UserEmail", userEmail || "");
-  addField("SubmissionId", submissionId || "");
   
   // Workflow
   addField("w_exam", document.getElementById("w_exam").value || "");
@@ -1504,31 +1473,17 @@ setTimeout(() => {
 }, 2500);
 }
 
-async function uploadPDFToDrive(pdfData, submissionId) {
+ async function uploadPDFToDrive(pdfData) {
   const response = await fetch("https://script.google.com/macros/s/AKfycbzWp7g0DhXUHL6_-Y-oFlcy6FEQUodESwg3WExIFDF3xPyQpoSlYznG6dxLxZgcP3M9/exec", {
     method: "POST",
     body: JSON.stringify({
       type: "uploadPDF",
       pdfData: pdfData,
-      practiceCode: document.getElementById("cn").value || "practice",
-      submissionId: submissionId
+      practiceCode: document.getElementById("cn").value || "practice"
     })
   });
+} 
 
-  const text = await response.text();
-  if (text !== "uploaded") {
-    throw new Error("PDF upload failed");
-  }
-}
-
-  window.addEventListener("load", function () {
-  const iframe = document.querySelector('iframe[name="hiddenFrame"]');
-  if (iframe) {
-    iframe.addEventListener("load", function () {
-      console.log("hiddenFrame received a response");
-    });
-  }
-});
 
 </script>
   
