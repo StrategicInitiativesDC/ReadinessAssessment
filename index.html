@@ -1354,6 +1354,11 @@ function buildPriorityActions(){
 async function exportPDF() {
   update();
 
+  if (typeof html2canvas === 'undefined' || !window.jspdf || !window.jspdf.jsPDF) {
+    alert('PDF libraries failed to load. Please refresh the page and try again.');
+    return '';
+  }
+
   const { jsPDF } = window.jspdf;
   const pageElement = document.querySelector('.page');
 
@@ -1361,14 +1366,14 @@ async function exportPDF() {
 
   try {
     const canvas = await html2canvas(pageElement, {
-      scale: 2,
+      scale: 1,
       useCORS: true,
       backgroundColor: '#F5F2EA',
       windowWidth: pageElement.scrollWidth,
       scrollY: 0
     });
 
-    const imgData = canvas.toDataURL('image/png');
+    const imgData = canvas.toDataURL('image/jpeg', 0.5);
 
     const pdf = new jsPDF('p', 'pt', 'letter');
 
@@ -1380,18 +1385,18 @@ async function exportPDF() {
     const usableHeight = pageHeight - margin * 2;
 
     const imgWidth = usableWidth;
-    const imgHeight = canvas.height * imgWidth / canvas.width;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
     let heightLeft = imgHeight;
     let position = margin;
 
-    pdf.addImage(imgData, 'PNG', margin, position, imgWidth, imgHeight);
+    pdf.addImage(imgData, 'JPEG', margin, position, imgWidth, imgHeight);
     heightLeft -= usableHeight;
 
     while (heightLeft > 0) {
       pdf.addPage();
       position = margin - (imgHeight - heightLeft);
-      pdf.addImage(imgData, 'PNG', margin, position, imgWidth, imgHeight);
+      pdf.addImage(imgData, 'JPEG', margin, position, imgWidth, imgHeight);
       heightLeft -= usableHeight;
     }
 
@@ -1403,30 +1408,31 @@ async function exportPDF() {
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-|-$/g, '');
 
-   pdf.save(`${fileName}.pdf`);
-const pdfData = pdf.output('datauristring');
+    pdf.save(`${fileName}.pdf`);
+    const pdfData = pdf.output('datauristring');
 
-window.generatedPDF = pdfData;
+    window.generatedPDF = pdfData;
 
-const toast = document.getElementById('toast');
-toast.textContent = '✓ PDF exported successfully';
-toast.style.display = 'block';
+    const toast = document.getElementById('toast');
+    toast.textContent = '✓ PDF exported successfully';
+    toast.style.display = 'block';
 
-setTimeout(() => {
-  toast.style.display = 'none';
-  toast.textContent = '✓ Exported successfully';
-}, 2500);
+    setTimeout(() => {
+      toast.style.display = 'none';
+      toast.textContent = '✓ Exported successfully';
+    }, 2500);
 
-return pdfData;
+    return pdfData;
 
   } catch (err) {
     console.error(err);
-    alert('PDF export failed. Please use your browser print option and select “Save as PDF”.');
+    alert('PDF export failed. Please use your browser print option and select "Save as PDF".');
+    return '';
   } finally {
     document.body.classList.remove('pdf-export');
   }
 }
-
+``
 // ============ REFERRAL TRIGGER TABS ============
 function showSpec(spec){
   document.querySelectorAll('.rt-panel').forEach(p=>p.style.display='none');
