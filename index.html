@@ -1455,18 +1455,22 @@ function clearForm(){
 
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzWp7g0DhXUHL6_-Y-oFlcy6FEQUodESwg3WExIFDF3xPyQpoSlYznG6dxLxZgcP3M9/exec";
 
-async function uploadPDFToDrive(pdfData, submissionId) {
-  if (!pdfData || !submissionId) return;
+async function uploadPDFToDrive(submissionId, pdfData) {
+  const payload = {
+    action: "uploadPdf",
+    SubmissionId: submissionId,
+    PracticeCode: document.getElementById("cn").value || "assessment",
+    PracticeName: document.getElementById("pname").value || "",
+    pdfData: pdfData || ""
+  };
 
-  await fetch(WEB_APP_URL, {
+  await fetch(SHEETS_URL, {
     method: "POST",
     mode: "no-cors",
-    body: JSON.stringify({
-      type: "uploadPDF",
-      pdfData: pdfData,
-      submissionId: submissionId,
-      practiceCode: document.getElementById("cn").value || "assessment"
-    })
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    },
+    body: JSON.stringify(payload)
   });
 }
   
@@ -1489,23 +1493,44 @@ async function confirmSubmit() {
 
   document.getElementById('emailModal').style.display = 'none';
 
+  const submissionId = "SRA-" + Date.now();
+
+  // 1) Download PDF locally in browser
   const pdfData = await exportPDF();
-  submitToSharePoint(email, pdfData);
+
+  // 2) Submit sheet row + email first (NO PDF in this request)
+  await submitToSharePoint(submissionId, email);
+
+  // 3) Upload PDF separately to Drive and write link back to the same row
+  if (pdfData) {
+    await uploadPDFToDrive(submissionId, pdfData);
+  }
+
+  const toast = document.getElementById('toast');
+  toast.textContent = '✓ Submitted successfully';
+  toast.style.display = 'block';
+
+  setTimeout(() => {
+    toast.style.display = 'none';
+    toast.textContent = '✓ Exported successfully';
+  }, 2500);
 }
 
   
-function submitToSharePoint(userEmail, pdfData) {
+async function submitToSharePoint(submissionId, userEmail) {
   const scoreText = document.getElementById("sv").textContent;
   const score = parseInt(scoreText.replace('%','')) || 0;
 
   const payload = {
+    action: "submitAssessment",
+    SubmissionId: submissionId,
+
     Title: document.getElementById("mgr").value || "No Name",
     PracticeName: document.getElementById("pname").value || "",
     PracticeCode: document.getElementById("cn").value || "",
     Specialty: document.getElementById("sp").value || "",
     TotalScore: score,
     UserEmail: userEmail || "",
-    pdfData: pdfData || "",
 
     // Workflow
     w_exam: document.getElementById("w_exam").value || "",
@@ -1557,24 +1582,13 @@ function submitToSharePoint(userEmail, pdfData) {
     t_huddle: document.getElementById("t_huddle").value || ""
   };
 
-  fetch(SHEETS_URL, {
+  await fetch(SHEETS_URL, {
     method: "POST",
     mode: "no-cors",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "text/plain;charset=utf-8"
     },
     body: JSON.stringify(payload)
-  }).then(() => {
-    const toast = document.getElementById('toast');
-    toast.textContent = '✓ Submitted successfully';
-    toast.style.display = 'block';
-
-    setTimeout(() => {
-      toast.style.display = 'none';
-      toast.textContent = '✓ Exported successfully';
-    }, 2500);
-  }).catch((err) => {
-    alert("Submission failed. Please try again.\n\n" + err);
   });
 }
 
