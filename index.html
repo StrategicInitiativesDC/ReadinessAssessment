@@ -1448,6 +1448,23 @@ function clearForm(){
   document.getElementById('support-requested-block').style.display='none';
   document.getElementById('support-requested-list').innerHTML='';
 }
+
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzWp7g0DhXUHL6_-Y-oFlcy6FEQUodESwg3WExIFDF3xPyQpoSlYznG6dxLxZgcP3M9/exec";
+
+async function uploadPDFToDrive(pdfData, submissionId) {
+  if (!pdfData || !submissionId) return;
+
+  await fetch(WEB_APP_URL, {
+    method: "POST",
+    mode: "no-cors",
+    body: JSON.stringify({
+      type: "uploadPDF",
+      pdfData: pdfData,
+      submissionId: submissionId,
+      practiceCode: document.getElementById("cn").value || "assessment"
+    })
+  });
+}
   
 function openEmailModal() {
   document.getElementById('emailModal').style.display = 'flex';
@@ -1459,8 +1476,8 @@ function closeModal() {
 
 
 async function confirmSubmit() {
-  const email = document.getElementById("userEmail").value;
-  
+  const email = document.getElementById("userEmail").value.trim();
+
   if (!email) {
     alert("Please enter your email");
     return;
@@ -1468,12 +1485,15 @@ async function confirmSubmit() {
 
   document.getElementById('emailModal').style.display = 'none';
 
-  await exportPDF();
-  submitToSharePoint(email);
+  const submissionId = "SRA-" + new Date().getTime();
+  const pdfData = await exportPDF();
+
+  await uploadPDFToDrive(pdfData, submissionId);
+  submitToSharePoint(email, submissionId);
 }
 
   
-function submitToSharePoint(userEmail) {
+function submitToSharePoint(userEmail, submissionId) {
 
   const scoreText = document.getElementById("sv").textContent;
   const score = parseInt(scoreText.replace('%','')) || 0;
@@ -1481,7 +1501,7 @@ function submitToSharePoint(userEmail) {
   const form = document.createElement("form");
   form.method = "POST";
   form.target = "hiddenFrame";
-  form.action = "https://script.google.com/macros/s/AKfycbzWp7g0DhXUHL6_-Y-oFlcy6FEQUodESwg3WExIFDF3xPyQpoSlYznG6dxLxZgcP3M9/exec";
+form.action = WEB_APP_URL;
 
   function addField(name, value) {
     const input = document.createElement("input");
@@ -1492,12 +1512,13 @@ function submitToSharePoint(userEmail) {
   }
 
   // Core
-  addField("Title", document.getElementById("mgr").value || "No Name");
+ addField("Title", document.getElementById("mgr").value || "No Name");
   addField("PracticeName", document.getElementById("pname").value || "");
   addField("PracticeCode", document.getElementById("cn").value || "");
   addField("Specialty", document.getElementById("sp").value || "");
   addField("TotalScore", score);
-addField("UserEmail", userEmail || "");
+  addField("UserEmail", userEmail || "");
+  addField("SubmissionId", submissionId || "");
   
   // Workflow
   addField("w_exam", document.getElementById("w_exam").value || "");
