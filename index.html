@@ -974,6 +974,26 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
 
   </div>
 
+<!-- ============ 8. ADDITIONAL CONTEXT ============ -->
+<div class="card card-accent">
+  <div class="sec-eyebrow">
+    <span class="sec-num">8</span>
+    <span class="sec-title">Additional context</span>
+    <div class="sec-rule"></div>
+  </div>
+
+  <div class="sec-intro">
+    Use this space to capture any additional context, nuances, or considerations that may impact specialist integration. This is optional but encouraged for clarity.
+  </div>
+
+  <div class="field">
+    <label>Is there anything else we should be aware of?</label>
+    <textarea id="additional_context" placeholder="e.g. unique patient demographics, provider dynamics, upcoming changes, operational constraints, or anything not captured above..."></textarea>
+  </div>
+</div>
+
+
+  
   <!-- ============ SCORE ============ -->
   <div class="score-card">
     <div class="score-eyebrow">Readiness assessment</div>
@@ -1555,6 +1575,8 @@ async function submitToSharePoint(submissionId, userEmail) {
     Specialty: document.getElementById("sp").value || "",
     TotalScore: score,
     UserEmail: userEmail || "",
+
+    AdditionalContext: document.getElementById("additional_context").value || "",
 
     // Workflow
     w_exam: document.getElementById("w_exam").value || "",
