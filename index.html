@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0061)https://strategicinitiativesdc.github.io/ReadinessAssessment/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Specialist Readiness Assessment - Dentalcorp</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -93,6 +93,18 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
 .sbar{height:5px;background:rgba(255,255,255,.15);border-radius:3px;margin-top:14px;overflow:hidden}
 .sfill{height:100%;border-radius:3px;width:0%;transition:width .5s cubic-bezier(.4,0,.2,1),background .4s;background:var(--atlantic)}
 .slbl{font-size:12px;color:var(--stone-blue);margin-top:8px;line-height:1.5}
+.domain-table-wrap{overflow-x:auto}
+.domain-table{width:100%;border-collapse:collapse;font-size:13px}
+.domain-table th{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--atlantic);text-align:left;padding:0 12px 8px 0;border-bottom:2px solid var(--cool-aqua);white-space:nowrap}
+.domain-table td{padding:11px 12px 11px 0;border-bottom:1px solid #e6e2d8;color:var(--text-secondary);line-height:1.5;vertical-align:top}
+.domain-table tr:last-child td{border-bottom:none}
+.domain-table .dt-name{font-weight:700;color:var(--text-primary)}
+.domain-table .dt-sec{white-space:nowrap;color:var(--atlantic);font-weight:700}
+.domain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:16px;position:relative;z-index:1}
+.domain-tile{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-left:3px solid var(--stone-blue);border-radius:8px;padding:12px 14px}
+.domain-name{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--stone-blue);margin-bottom:6px;line-height:1.3}
+.domain-status{font-family:var(--sans);font-size:14px;font-weight:700;color:#fff;line-height:1.3}
+.domain-sub{font-size:11px;color:var(--stone-blue);margin-top:4px;line-height:1.4}
 .quote-callout{background:var(--black-olive);border-radius:10px;padding:1.5rem 1.75rem;margin-bottom:1.25rem;position:relative}
 .quote-callout p{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--latte);line-height:1.6}
 .quote-callout .quote-attr{font-family:var(--sans);font-style:normal;font-size:11px;color:var(--stone-blue);margin-top:8px;text-transform:uppercase;letter-spacing:.06em}
@@ -125,7 +137,7 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
 <body>
 <input type="hidden" id="__REQUESTDIGEST" value="">
 <div class="topbar">
-  <svg class="shine" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M50 0 C50 28 72 50 100 50 C72 50 50 72 50 100 C50 72 28 50 0 50 C28 50 50 28 50 0Z" fill="#FDF5E8"/></svg>
+  <svg class="shine" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M50 0 C50 28 72 50 100 50 C72 50 50 72 50 100 C50 72 28 50 0 50 C28 50 50 28 50 0Z" fill="#FDF5E8"></path></svg>
   <span class="brand">dentalcorp</span>
   <div class="divider"></div>
   <span class="subbrand">dc Clinical Operations</span>
@@ -134,16 +146,44 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
   <div class="page-header">
     <div class="eyebrow">Office preparation</div>
     <h1>Specialist Support Survey</h1>
-    <p>Complete this survey to confirm that workflow, clinical culture, infrastructure, and training foundations are in place before a specialist begins.</p>
+    <p>Completed by the CDM, with input from the Regional Manager, Practice Manager, and team, this survey maps four areas of specialist integration so support can be planned where it will help most.</p>
   </div>
   <p class="req-note"><span>*</span> Required fields</p>
+
+<div class="card card-accent">
+  <div class="sec-eyebrow">
+    <svg class="shine-sm" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M50 0 C50 28 72 50 100 50 C72 50 50 72 50 100 C50 72 28 50 0 50 C28 50 50 28 50 0Z" fill="#34798D"></path>
+    </svg>
+    <span class="sec-title">What this survey covers</span>
+    <div class="sec-rule"></div>
+  </div>
+
+  <p style="font-size:13px; color:var(--text-secondary); line-height:1.65; margin-bottom:16px;">
+    Each area is reported on its own rather than combined into a single score, because the kind of support a practice needs differs by area. Sections 5 to 7 gather information to help plan and are not rated.
+  </p>
+
+  <div class="domain-table-wrap">
+    <table class="domain-table">
+      <thead>
+        <tr><th>Domain</th><th>Sections</th><th>What it tells you</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="dt-name">Diagnosis &amp; Treatment Planning</td><td class="dt-sec">1a–1c</td><td>Can they see and name it?</td></tr>
+        <tr><td class="dt-name">Communication</td><td class="dt-sec">2</td><td>Does the patient hear it consistently?</td></tr>
+        <tr><td class="dt-name">Infrastructure</td><td class="dt-sec">3</td><td>Can the specialist physically work?</td></tr>
+        <tr><td class="dt-name">Admin Support</td><td class="dt-sec">4</td><td>Will the schedule stay full?</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <div class="card card-accent">
 
   
  <div class="sec-eyebrow">
     <svg class="shine-sm" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M50 0 C50 28 72 50 100 50 C72 50 50 72 50 100 C50 72 28 50 0 50 C28 50 50 28 50 0Z" fill="#34798D"/>
+      <path d="M50 0 C50 28 72 50 100 50 C72 50 50 72 50 100 C50 72 28 50 0 50 C28 50 50 28 50 0Z" fill="#34798D"></path>
     </svg>
     <span class="sec-title">Response guide</span>
     <div class="sec-rule"></div>
@@ -244,7 +284,7 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
   <!-- ============ CLINIC INFO ============ -->
   <div class="card card-accent">
     <div class="sec-eyebrow">
-      <svg class="shine-sm" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M50 0 C50 28 72 50 100 50 C72 50 50 72 50 100 C50 72 28 50 0 50 C28 50 50 28 50 0Z" fill="#34798D"/></svg>
+      <svg class="shine-sm" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M50 0 C50 28 72 50 100 50 C72 50 50 72 50 100 C50 72 28 50 0 50 C28 50 50 28 50 0Z" fill="#34798D"></path></svg>
       <span class="sec-title">Clinic information</span><div class="sec-rule"></div>
     </div>
     <div class="g2">
@@ -277,7 +317,7 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
   <!-- ============ 1. WORKFLOW ============ -->
   <div class="card card-accent">
     <div class="sec-eyebrow">
-      <span class="sec-num">1</span>
+      <span class="sec-num">1a</span>
       <span class="sec-title">Workflow: Exam &amp; Referral Flow</span><div class="sec-rule"></div>
     </div>
     <div class="sec-intro">
@@ -300,35 +340,24 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
         <label>Is perio charting completed at every new patient exam? <span class="req">*</span></label>
         <select id="w_perio_new" onchange="update()">
           <option value="">Select...</option>
-          <option value="yes">Yes: 6-point charting on every new patient</option>
+          <option value="yes">Yes</option>
           <option value="sometimes">Sometimes, depends on provider</option>
           <option value="suspected">Only when perio is clinically suspected</option>
           <option value="no">No, not routinely done</option>
         </select>
       </div>
       <div class="field">
-        <label>Is perio charting updated at every recall exam? <span class="req">*</span></label>
+        <label>Is perio charting updated annually? <span class="req">*</span></label>
         <select id="w_perio_recall" onchange="update()">
           <option value="">Select...</option>
-          <option value="yes">Yes, updated at every recall</option>
-          <option value="annually">Annually</option>
+          <option value="yes">Yes, updated annually</option>
           <option value="concerns">Only when concerns arise</option>
-          <option value="no">No</option>
+          <option value="no">No, not routinely updated</option>
         </select>
       </div>
     </div>
     <!-- Row 3: diagnosis + referral -->
     <div class="g2">
-      <div class="field">
-        <label>Is a comprehensive diagnosis documented before treatment planning? <span class="req">*</span></label>
-        <select id="w_diagnosis" onchange="update()">
-          <option value="">Select...</option>
-          <option value="yes">Yes, always documented before any treatment plan</option>
-          <option value="sometimes">Sometimes, depends on the provider</option>
-          <option value="rarely">Rarely</option>
-          <option value="no">No</option>
-        </select>
-      </div>
       <div class="field">
         <label>Is there a structured internal referral workflow from GP to specialist? <span class="req">*</span></label>
         <select id="w_referral" onchange="update()">
@@ -353,7 +382,7 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
         </select>
       </div>
       <div class="field">
-        <label>Does every operatory have digital records and imaging on screen?</label>
+        <label>Do you have access to digital records and imaging in your operatories?</label>
         <select id="i_digital" onchange="update()">
           <option value="">Select...</option>
           <option value="yes">Yes, all operatories</option>
@@ -370,7 +399,7 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
   <!-- ============ 2. MINDSET ============ -->
   <div class="card card-accent">
     <div class="sec-eyebrow">
-      <span class="sec-num">2</span>
+      <span class="sec-num">1b</span>
       <span class="sec-title">Clinical lens &amp; diagnosis culture</span><div class="sec-rule"></div>
     </div>
     <div class="sec-intro">
@@ -459,15 +488,6 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
           <option value="no">Not yet, this is an area for development</option>
         </select>
       </div>
-      <div class="field">
-        <label>How much clinical context travels with each referral? <span class="req">*</span></label>
-        <select id="m_context" onchange="update()">
-          <option value="">Select...</option>
-          <option value="full">Full: documented diagnosis, clinical findings, and patient already briefed</option>
-          <option value="some">Partial: basic notes, patient may not be fully prepared</option>
-          <option value="minimal">Minimal: referral only, no additional context provided</option>
-        </select>
-      </div>
     </div>
     <div id="qa_lens" class="qa warn" style="display:none"><strong>Opportunity:</strong> One or more diagnostic focus areas are not being assessed consistently. Coaching support to build this habit across the team before integration begins will strengthen both exam quality and referral identification.</div>
     <div id="qa_comfort" class="qa warn" style="display:none"><strong>Coaching opportunity:</strong> Building GP confidence in specialty conversations is a great area to address before integration. Communication coaching can make a meaningful difference.</div>
@@ -476,7 +496,7 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
   <!-- ============ 2B. TREATMENT PLANNING - 4 Ds ============ -->
   <div class="card card-accent">
     <div class="sec-eyebrow">
-      <span class="sec-num">2b</span>
+      <span class="sec-num">1c</span>
       <span class="sec-title">Treatment Planning: The Four Steps</span><div class="sec-rule"></div>
     </div>
     <div class="sec-intro">
@@ -487,12 +507,12 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
       <div class="step-card">
         <div class="step-badge">D1</div>
         <h4>Data Collection</h4>
-        <p>Comprehensive charting: 6-point perio probing, recession, mobility, BOP, furcation involvement. Radiographs, intraoral photos, scan, odontogram. Medical history, medications, systemic conditions. Chief complaint in the patient&rsquo;s own words. Every finding bucketed into one of the four diagnostic focus areas (bacterial, structural, functional, esthetic).</p>
+        <p>Comprehensive charting: 6-point perio probing, recession, CAL (clinical attachment loss), mobility, BOP, furcation involvement. Radiographs, intraoral photos, scan, odontogram. Medical history, medications, systemic conditions. Chief complaint in the patient’s own words. Every finding bucketed into one of the four diagnostic focus areas (bacterial, structural, functional, esthetic).</p>
       </div>
       <div class="step-card">
         <div class="step-badge">D2</div>
         <h4>Diagnosis</h4>
-        <p>Classify periodontal status (staging &amp; grading). Document active caries, endodontic pathology, and soft tissue lesions. Assess fracture risk, failing restorations, and missing teeth. Evaluate occlusal wear, parafunctional signs, and TMJ. Capture esthetic desires and note discrepancies from clinical status.</p>
+        <p>Classify periodontal status — health, gingivitis, or periodontitis (staging &amp; grading). Document active caries, endodontic pathology, and soft tissue lesions. Assess fracture risk, failing restorations, and missing teeth. Evaluate occlusal wear, parafunctional signs, and TMJ. Capture esthetic desires and note discrepancies from clinical status.</p>
       </div>
       <div class="step-card">
         <div class="step-badge">D3</div>
@@ -502,7 +522,7 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
       <div class="step-card">
         <div class="step-badge">D4</div>
         <h4>Documentation</h4>
-        <p>Record all options discussed with associated fees and timelines. Document the patient&rsquo;s chosen plan and any risks of deferral they acknowledged. Note which plan was accepted and why. If a patient declines a recommended option, document that risks were clearly explained. This is your informed consent record.</p>
+        <p>Record all options discussed with associated fees and timelines. Document the patient’s chosen plan and any risks of deferral they acknowledged. Note which plan was accepted and why. If a patient declines a recommended option, document that risks were clearly explained. This is your informed consent record.</p>
       </div>
     </div>
 
@@ -514,15 +534,6 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
           <option value="yes">Yes, consistently across all GPs</option>
           <option value="partial">Partially, some GPs, not all</option>
           <option value="no">No, not in practice</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Is treatment planning documented in the patient chart before presenting to the patient? <span class="req">*</span></label>
-        <select id="tp_doc" onchange="update()">
-          <option value="">Select...</option>
-          <option value="yes">Yes, always documented first</option>
-          <option value="sometimes">Sometimes</option>
-          <option value="no">No, verbal or after the fact</option>
         </select>
       </div>
       <div class="field">
@@ -541,18 +552,18 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
   <!-- ============ 3. RECALL HANDOFF ============ -->
   <div class="card card-accent">
     <div class="sec-eyebrow">
-      <span class="sec-num">3</span>
-      <span class="sec-title">Recall Handoff: Hygienist to Dentist</span><div class="sec-rule"></div>
+      <span class="sec-num">2</span>
+      <span class="sec-title">Hygiene Handoff: Hygienist to Dentist</span><div class="sec-rule"></div>
     </div>
     <div class="sec-intro">
-      The hygiene-dentist handoff is one of the highest-leverage moments in the recall appointment. When a hygienist presents findings to the dentist in the patient&rsquo;s presence and the dentist reinforces them, the patient hears consistent messaging from both providers. This is where specialist referrals are introduced naturally.
+      The hygiene-dentist handoff is one of the highest-leverage moments in the appointment. When a hygienist presents findings to the dentist in the patient’s presence and the dentist reinforces them, the patient hears consistent messaging from both providers. This is where specialist referrals are introduced naturally.
     </div>
 
 
 
     <div class="g2">
       <div class="field">
-        <label>Is there a standardized recall handoff protocol that both hygienists and dentists have agreed on?</label>
+        <label>Is there a standardized handoff protocol that both hygienists and dentists have agreed on?</label>
         <select id="ho_protocol" onchange="update()">
           <option value="">Select...</option>
           <option value="yes">Yes, written protocol in place and team trained</option>
@@ -561,26 +572,26 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
         </select>
       </div>
       <div class="field">
-        <label>Does a formal hygienist-to-dentist handoff occur at every recall appointment, in the operatory, in front of the patient? <span class="req">*</span></label>
+        <label>Does a formal hygienist-to-dentist handoff occur at every appointment, in the operatory, in front of the patient? <span class="req">*</span></label>
         <select id="ho_formal" onchange="update()">
           <option value="">Select...</option>
-          <option value="yes">Yes, formal in-room handoff at every recall</option>
+          <option value="yes">Yes, formal in-room handoff at every appointment</option>
           <option value="sometimes">Sometimes, inconsistent</option>
           <option value="hallway">Hallway only, not in front of patient</option>
           <option value="no">Not yet established</option>
         </select>
       </div>
       <div class="field">
-        <label>Does the dentist reinforce the hygienist&rsquo;s findings rather than starting the exam from scratch? <span class="req">*</span></label>
+        <label>Does the dentist reinforce the hygienist’s findings rather than starting the exam from scratch? <span class="req">*</span></label>
         <select id="ho_reinforce" onchange="update()">
           <option value="">Select...</option>
-          <option value="yes">Yes, dentist builds on hygienist&rsquo;s findings</option>
+          <option value="yes">Yes, dentist builds on hygienist’s findings</option>
           <option value="sometimes">Sometimes</option>
           <option value="no">Not yet, dentist typically conducts exam independently</option>
         </select>
       </div>
       <div class="field">
-        <label>Are specialty referral needs identified and communicated during the hygiene appointment, before the dentist arrives? <span class="req">*</span></label>
+        <label>Are potential specialty referral triggers identified and communicated during the hygiene appointment, before the dentist arrives? <span class="req">*</span></label>
         <select id="ho_seed" onchange="update()">
           <option value="">Select...</option>
           <option value="yes">Yes, hygienist flags referral triggers in the handoff</option>
@@ -595,7 +606,7 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
   <!-- ============ 4. INFRASTRUCTURE ============ -->
   <div class="card card-accent">
     <div class="sec-eyebrow">
-      <span class="sec-num">4</span>
+      <span class="sec-num">3</span>
       <span class="sec-title">Infrastructure: Space, Schedule &amp; Team</span><div class="sec-rule"></div>
     </div>
 
@@ -633,7 +644,7 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
         </select>
       </div>
       <div class="field">
-        <label>Does the team hold a morning huddle?</label>
+        <label>Does the team hold a daily huddle?</label>
         <select id="w_huddle" onchange="update()">
           <option value="">Select...</option>
           <option value="yes">Yes, daily huddle</option>
@@ -650,15 +661,15 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
   <!-- ============ 5. ADMIN & RECALL ============ -->
   <div class="card card-accent">
     <div class="sec-eyebrow">
-      <span class="sec-num">5</span>
-      <span class="sec-title">Admin &amp; recall management</span><div class="sec-rule"></div>
+      <span class="sec-num">4</span>
+      <span class="sec-title">Admin support &amp; recall management</span><div class="sec-rule"></div>
     </div>
     <div class="sec-intro">
-      A strong admin team that actively owns the specialist patient journey from booking through re-engagement is key to keeping the specialist&rsquo;s schedule full and consistent.
+      A strong admin team that actively owns the specialist patient journey from booking through re-engagement is key to keeping the specialist’s schedule full and consistent.
     </div>
     <div class="g2">
       <div class="field">
-        <label>Is there a dedicated admin person assigned to manage the specialist&rsquo;s schedule and patient flow? <span class="req">*</span></label>
+        <label>Is there a dedicated admin person assigned to manage the specialist’s schedule and patient flow? <span class="req">*</span></label>
         <select id="a_admin" onchange="update()">
           <option value="">Select...</option>
           <option value="yes">Yes, dedicated admin in place</option>
@@ -669,7 +680,7 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
 
       <div class="field">
         <div class="tooltip-label">
-          <label>How strong is recall management? <span class="req">*</span></label>
+          <label>How strong is recall management, including hygiene recall? <span class="req">*</span></label>
           <span class="tooltip-icon" title="Target: 85%+ of active patients with a future hygiene appointment booked. Patients reappointed at the chair, not just called from a list.">?</span>
         </div>
         <select id="a_recall" onchange="update()">
@@ -682,21 +693,12 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
       </div>
 
       <div class="field">
-        <label>Does the admin team understand the specialist&rsquo;s booking requirements? <span class="req">*</span></label>
+        <label>Does the admin team understand the specialist’s booking requirements? <span class="req">*</span></label>
         <select id="a_booking" onchange="update()">
           <option value="">Select...</option>
           <option value="yes">Yes, fully briefed on appointment length, equipment prep, pre-visit records</option>
           <option value="partial">Partially, some understanding with gaps</option>
           <option value="no">Not yet trained</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Is AR (accounts receivable) managed effectively, including specialist billing?</label>
-        <select id="a_ar" onchange="update()">
-          <option value="">Select...</option>
-          <option value="yes">Yes, AR managed and current</option>
-          <option value="moderate">Moderate, some management with gaps</option>
-          <option value="no">Not yet actively managed</option>
         </select>
       </div>
       <div class="field">
@@ -712,10 +714,10 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
     <div id="qa_recall" class="qa warn" style="display:none"><strong>Opportunity:</strong> Building a proactive recall system before integration begins will help ensure a steady and consistent flow of patients for the specialist.</div>
   </div>
 
-  <!-- ============ 6. TRAINING ============ -->
+  <!-- ============ 5. TRAINING ============ -->
   <div class="card card-accent">
     <div class="sec-eyebrow">
-      <span class="sec-num">6</span>
+      <span class="sec-num">5</span>
       <span class="sec-title">Training &amp; support needs</span><div class="sec-rule"></div>
     </div>
     <div class="sec-intro">
@@ -732,7 +734,7 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
         </select>
       </div>
       <div class="field">
-        <label>Does the hygiene team need coaching on flagging specialty needs during recall? <span class="req">*</span></label>
+        <label>Does the hygiene team need coaching on flagging specialty needs during appointments? <span class="req">*</span></label>
         <select id="t_rdh" onchange="update()">
           <option value="">Select...</option>
           <option value="no">No, hygienists are strong in this area</option>
@@ -768,16 +770,16 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
         </select>
       </div>
       <div class="field">
-        <label>Does the team need support establishing a morning huddle structure?</label>
+        <label>Does the team need support establishing a daily huddle structure?</label>
         <select id="t_huddle" onchange="update()">
           <option value="">Select...</option>
-          <option value="no">No, morning huddle is in place and running</option>
+          <option value="no">No, daily huddle is in place and running</option>
           <option value="some">Huddle exists but needs more consistency</option>
           <option value="yes">Yes, no huddle structure currently in place</option>
         </select>
       </div>
       <div class="field">
-        <label>Does the team need coaching on the hygienist-to-dentist recall handoff protocol?</label>
+        <label>Does the team need coaching on the hygienist-to-dentist handoff protocol?</label>
         <select id="t_handoff" onchange="update()">
           <option value="">Select...</option>
           <option value="no">No, handoff is strong and consistent</option>
@@ -787,68 +789,64 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
       </div>
     </div>
     <div class="mt field">
-      <label>What training has already been completed?</label>
-      <textarea id="t_done" placeholder="Describe any training already in place..."></textarea>
-    </div>
-    <div class="mt field">
       <label>What additional support would be most helpful?</label>
       <div class="check-group">
-        <label class="ci"><input type="checkbox" id="ts1" onchange="update()"><span class="ci-pill"><span class="ci-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Referral trigger training for GPs</span></label>
-        <label class="ci"><input type="checkbox" id="ts2" onchange="update()"><span class="ci-pill"><span class="ci-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Hygiene coaching on flagging specialty needs at recall</span></label>
-        <label class="ci"><input type="checkbox" id="ts3" onchange="update()"><span class="ci-pill"><span class="ci-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Admin workflow and specialist booking training</span></label>
-        <label class="ci"><input type="checkbox" id="ts4" onchange="update()"><span class="ci-pill"><span class="ci-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Case acceptance and patient communication coaching</span></label>
-        <label class="ci"><input type="checkbox" id="ts5" onchange="update()"><span class="ci-pill"><span class="ci-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Morning huddle structure and specialist identification</span></label>
-        <label class="ci"><input type="checkbox" id="ts6" onchange="update()"><span class="ci-pill"><span class="ci-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Four diagnostic focus area coaching (bacterial, structural, functional, esthetic)</span></label>
-        <label class="ci"><input type="checkbox" id="ts7" onchange="update()"><span class="ci-pill"><span class="ci-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Hygienist-to-dentist recall handoff protocol</span></label>
-        <label class="ci"><input type="checkbox" id="ts9" onchange="update()"><span class="ci-pill"><span class="ci-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>The four-step treatment planning framework (4 Ds)</span></label>
-        <label class="ci"><input type="checkbox" id="ts10" onchange="update()"><span class="ci-pill"><span class="ci-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>None, team is ready</span></label>
+        <label class="ci"><input type="checkbox" id="ts1" onchange="update()"><span class="ci-pill"><span class="ci-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"></polyline></svg></span>Referral trigger training for GPs</span></label>
+        <label class="ci"><input type="checkbox" id="ts2" onchange="update()"><span class="ci-pill"><span class="ci-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"></polyline></svg></span>Hygiene coaching on flagging specialty needs at appointments</span></label>
+        <label class="ci"><input type="checkbox" id="ts3" onchange="update()"><span class="ci-pill"><span class="ci-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"></polyline></svg></span>Admin workflow and specialist booking training</span></label>
+        <label class="ci"><input type="checkbox" id="ts4" onchange="update()"><span class="ci-pill"><span class="ci-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"></polyline></svg></span>Case acceptance and patient communication coaching</span></label>
+        <label class="ci"><input type="checkbox" id="ts5" onchange="update()"><span class="ci-pill"><span class="ci-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"></polyline></svg></span>Daily huddle structure and specialist identification</span></label>
+        <label class="ci"><input type="checkbox" id="ts6" onchange="update()"><span class="ci-pill"><span class="ci-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"></polyline></svg></span>Four diagnostic focus area coaching (bacterial, structural, functional, esthetic)</span></label>
+        <label class="ci"><input type="checkbox" id="ts7" onchange="update()"><span class="ci-pill"><span class="ci-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"></polyline></svg></span>Hygienist-to-dentist handoff protocol</span></label>
+        <label class="ci"><input type="checkbox" id="ts9" onchange="update()"><span class="ci-pill"><span class="ci-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"></polyline></svg></span>The four-step treatment planning framework (4 Ds)</span></label>
+        <label class="ci"><input type="checkbox" id="ts10" onchange="update()"><span class="ci-pill"><span class="ci-box"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"></polyline></svg></span>None, team is ready</span></label>
       </div>
     </div>
   </div>
 
-  <!-- ============ 7. REFERRAL TRIGGERS ============ -->
+  <!-- ============ 6. RESOURCES: REFERRAL TRIGGERS ============ -->
   <div class="card card-accent">
     <div class="sec-eyebrow">
-      <span class="sec-num">7</span>
-      <span class="sec-title">Referral Triggers by Specialty</span><div class="sec-rule"></div>
+      <span class="sec-num">6</span>
+      <span class="sec-title">Resources: Referral Triggers by Specialty</span><div class="sec-rule"></div>
     </div>
     <div class="sec-intro">
-      Use this reference to confirm your team can reliably identify and communicate the clinical findings that warrant each specialty referral. Triggers are organized by the four diagnostic focus areas. This is a team alignment tool, not a scored section.
+      Use this reference to confirm your team can reliably identify and communicate the clinical findings that warrant each specialty referral. Triggers are organized by the four diagnostic focus areas. This is a reference and team alignment tool.
     </div>
 
     <!-- Specialty tab selector -->
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;" id="rt-tabs">
-      <button class="rt-tab rt-active" onclick="showSpec('perio')" data-spec="perio">Periodontist</button>
-      <button class="rt-tab" onclick="showSpec('os')" data-spec="os">Oral Surgeon</button>
-      <button class="rt-tab" onclick="showSpec('ortho')" data-spec="ortho">Orthodontist</button>
-      <button class="rt-tab" onclick="showSpec('endo')" data-spec="endo">Endodontist</button>
+      <button class="rt-tab rt-active" onclick="showSpec(&#39;perio&#39;)" data-spec="perio">Periodontist</button>
+      <button class="rt-tab" onclick="showSpec(&#39;os&#39;)" data-spec="os">Oral Surgeon</button>
+      <button class="rt-tab" onclick="showSpec(&#39;ortho&#39;)" data-spec="ortho">Orthodontist</button>
+      <button class="rt-tab" onclick="showSpec(&#39;endo&#39;)" data-spec="endo">Endodontist</button>
     </div>
 
     <!-- PERIODONTIST -->
     <div id="rt-perio" class="rt-panel">
       <div class="pillar-grid">
         <div class="pillar-card">
-          <h4>&#129440; Bacterial</h4>
+          <h4>🦠 Bacterial</h4>
           <p>Stage II–IV periodontitis (4mm+ CAL, BOP present)</p>
           <p>Generalized BOP with pocketing unresponsive after active therapy re-eval</p>
           <p>Peri-implantitis: pocketing and radiographic bone loss around implants</p>
           <p>Grade C (rapid progression): smokers, diabetics, HbA1c &gt;7</p>
         </div>
         <div class="pillar-card">
-          <h4>&#129521; Structural</h4>
+          <h4>🧱 Structural</h4>
           <p>Recession with inadequate attached gingiva (&lt;2mm keratinized tissue)</p>
           <p>Subgingival fracture or decay requiring crown lengthening before restoration (biologic width violation)</p>
           <p>Furcation involvement Class II–III</p>
           <p>Missing teeth requiring implant site development (ridge deficiency, socket grafting)</p>
         </div>
         <div class="pillar-card">
-          <h4>&#9881;&#65039; Functional</h4>
+          <h4>⚙️ Functional</h4>
           <p>Implant placement: confirm adequate bone volume before final restoration</p>
           <p>Ortho-perio link: screen for recession and bone loss before clear aligner or bracket therapy</p>
           <p>Bruxism combined with bone loss: elevated risk of progression</p>
         </div>
         <div class="pillar-card">
-          <h4>&#10024; Esthetic</h4>
+          <h4>✨ Esthetic</h4>
           <p>Excessive gingival display ("gummy smile"): esthetic crown lengthening</p>
           <p>Gingival asymmetry affecting smile line</p>
           <p>Soft tissue volume loss at implant site (requires CTG/FGG before or at placement)</p>
@@ -866,28 +864,28 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
     <div id="rt-os" class="rt-panel" style="display:none">
       <div class="pillar-grid">
         <div class="pillar-card">
-          <h4>&#129440; Bacterial</h4>
+          <h4>🦠 Bacterial</h4>
           <p>Non-restorable tooth with periapical pathology or failed endo: extraction + immediate implant consult</p>
           <p>Chronic unexplained pain or soft tissue lesion not resolving after 2 weeks: biopsy referral</p>
           <p>Odontogenic infection requiring surgical drainage</p>
           <p>Pericoronal pathology around partially erupted third molars</p>
         </div>
         <div class="pillar-card">
-          <h4>&#129521; Structural</h4>
+          <h4>🧱 Structural</h4>
           <p>Impacted third molars (ages 16–25: panorex even if asymptomatic)</p>
           <p>Terminal dentition or failing bridge: extraction + implant site development</p>
           <p>Severe ridge resorption requiring block graft or alveoloplasty before prosthetics</p>
           <p>Root curvature or proximity to IA nerve / sinus floor on panorex</p>
         </div>
         <div class="pillar-card">
-          <h4>&#9881;&#65039; Functional</h4>
+          <h4>⚙️ Functional</h4>
           <p>Implant placement for missing tooth: socket preservation at time of extraction to prevent bone loss</p>
           <p>Sinus lift (crestal or lateral): when vertical bone height is insufficient for implant</p>
           <p>Ortho-surgical link: impacted canines or teeth requiring exposure for bracket bonding; TADs (temporary anchorage devices)</p>
           <p>High labial or lingual frenum affecting function or periodontal health: frenectomy</p>
         </div>
         <div class="pillar-card">
-          <h4>&#10024; Esthetic</h4>
+          <h4>✨ Esthetic</h4>
           <p>Implant in esthetic zone: prosthetically-driven surgical guide required; discuss screw vs. cement-retained restoration before first drill</p>
           <p>Ridge augmentation to restore natural emergence profile before implant crown</p>
           <p>Soft tissue biopsy or excision of visible pathology in smile zone</p>
@@ -904,27 +902,27 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
     <div id="rt-ortho" class="rt-panel" style="display:none">
       <div class="pillar-grid">
         <div class="pillar-card">
-          <h4>&#129440; Bacterial</h4>
+          <h4>🦠 Bacterial</h4>
           <p>Periodontal disease must be treated and stabilized before orthodontic tooth movement begins</p>
           <p>Active caries must be restored before brackets or aligners are placed</p>
           <p>Crowding contributing to periodontal pocketing due to inability to clean interproximally: ortho to improve access and long-term perio health</p>
         </div>
         <div class="pillar-card">
-          <h4>&#129521; Structural</h4>
+          <h4>🧱 Structural</h4>
           <p>Crowding, spacing, or arch discrepancy affecting long-term restorative plan</p>
           <p>Missing teeth with drifting adjacent teeth: ortho space maintenance or space opening before implant</p>
           <p>Impacted teeth (canines, second molars): surgical exposure + bracket for guided eruption</p>
           <p>Ortho-perio link: screen for recession and inadequate attached gingiva before initiating treatment, as tooth movement through thin tissue worsens recession</p>
         </div>
         <div class="pillar-card">
-          <h4>&#9881;&#65039; Functional</h4>
+          <h4>⚙️ Functional</h4>
           <p>Malocclusion contributing to occlusal wear, abfractions, or TMJ symptoms</p>
           <p>Open bite or deep bite affecting restorative options (implants, veneers)</p>
           <p>Skeletal discrepancy requiring orthognathic surgical consultation</p>
           <p>Airway or sleep concern with retrognathic skeletal pattern: refer for combined ortho-airway assessment</p>
         </div>
         <div class="pillar-card">
-          <h4>&#10024; Esthetic</h4>
+          <h4>✨ Esthetic</h4>
           <p>Patient interest in alignment correction before or instead of veneers: ortho-restorative planning conversation</p>
           <p>Midline discrepancy, gingival asymmetry, or smile arc concerns that may be addressed orthodontically</p>
           <p>Pre-restorative ortho to idealize tooth position and reduce the number of restorations needed</p>
@@ -940,27 +938,27 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
     <div id="rt-endo" class="rt-panel" style="display:none">
       <div class="pillar-grid">
         <div class="pillar-card">
-          <h4>&#129440; Bacterial</h4>
+          <h4>🦠 Bacterial</h4>
           <p>Symptomatic irreversible pulpitis unresponsive to treatment</p>
           <p>Periapical abscess or chronic periapical lesion on radiograph</p>
           <p>Necrotic pulp with or without sinus tract</p>
           <p>Internal or external root resorption identified radiographically</p>
         </div>
         <div class="pillar-card">
-          <h4>&#129521; Structural</h4>
+          <h4>🧱 Structural</h4>
           <p>Calcified or complex canal anatomy requiring CBCT guidance</p>
           <p>Separated file, ledge, or procedural complication during GP root canal</p>
           <p>Vertical root fracture suspected: endo consult before committing to crown</p>
           <p>Previously treated tooth with recurrent infection or persistent symptoms (re-treatment or apical surgery)</p>
         </div>
         <div class="pillar-card">
-          <h4>&#9881;&#65039; Functional</h4>
+          <h4>⚙️ Functional</h4>
           <p>Tooth with questionable prognosis under occlusal load: endo vs. extraction decision before definitive restoration</p>
           <p>Strategic tooth in the prosthetic plan (abutment) where endodontic status must be confirmed before investing in restoration</p>
           <p>Cracked tooth syndrome: define crack extent before recommending crown or extraction</p>
         </div>
         <div class="pillar-card">
-          <h4>&#10024; Esthetic</h4>
+          <h4>✨ Esthetic</h4>
           <p>Discoloured tooth following trauma or previous endo: internal bleaching consult before veneer planning</p>
           <p>Endo outcome affects final crown shade and translucency in anterior esthetic zone</p>
           <p>Confirm restorability and post-core strategy with endo specialist before presenting esthetic treatment plan to patient</p>
@@ -974,10 +972,10 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
 
   </div>
 
-<!-- ============ 8. ADDITIONAL CONTEXT ============ -->
+<!-- ============ 7. ADDITIONAL CONTEXT ============ -->
 <div class="card card-accent">
   <div class="sec-eyebrow">
-    <span class="sec-num">8</span>
+    <span class="sec-num">7</span>
     <span class="sec-title">Additional context</span>
     <div class="sec-rule"></div>
   </div>
@@ -994,26 +992,22 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
 
 
   
-  <!-- ============ SCORE ============ -->
+  <!-- ============ DOMAIN RESULTS ============ -->
   <div class="score-card">
-    <div class="score-eyebrow">Readiness assessment</div>
-    <div class="score-main">
-      <span id="sv">—</span>
-      <span id="ss">Complete the form to see your score</span>
-    </div>
-    <div class="sbar"><div class="sfill" id="sfill"></div></div>
-    <div class="slbl" id="slbl"></div>
+    <div class="score-eyebrow">Support summary</div>
+    <div class="slbl" id="slbl">Complete the form to see where support may be helpful.</div>
+    <div id="domain-grid" class="domain-grid" style="display:none"></div>
   </div>
 
   <!-- ============ PRIORITY ACTIONS ============ -->
   <div class="card card-accent" id="priority-card" style="display:none">
     <div class="sec-eyebrow">
-      <svg class="shine-sm" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M50 0 C50 28 72 50 100 50 C72 50 50 72 50 100 C50 72 28 50 0 50 C28 50 50 28 50 0Z" fill="#34798D"/></svg>
-      <span class="sec-title">Priority actions before integration</span><div class="sec-rule"></div>
+      <svg class="shine-sm" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M50 0 C50 28 72 50 100 50 C72 50 50 72 50 100 C50 72 28 50 0 50 C28 50 50 28 50 0Z" fill="#34798D"></path></svg>
+      <span class="sec-title">Where support may be helpful</span><div class="sec-rule"></div>
     </div>
     <div id="priority-list"></div>
     <div id="priority-ready" style="display:none;padding:12px 15px;background:#EEF6EE;border-radius:7px;border-left:3px solid #4a9460;font-size:13px;color:#1e4d2b;line-height:1.6">
-      <strong>Strong foundations in place.</strong> No critical gaps identified. Review any amber items above and confirm all logistics are confirmed with the specialist before the first session.
+      <strong>Strong foundations in place.</strong> No support areas were flagged from your responses. Review any amber notes above and confirm logistics with the specialist before the first session.
     </div>
     <div id="support-requested-block" style="display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid #ddd9ce">
       <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#34798D;margin-bottom:10px">Support explicitly requested by the practice</div>
@@ -1049,12 +1043,12 @@ body{font-family:var(--sans);background:var(--body-bg);color:var(--text-primary)
   </div>
 
   <div class="footer">
-    <svg class="shine-ft" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M50 0 C50 28 72 50 100 50 C72 50 50 72 50 100 C50 72 28 50 0 50 C28 50 50 28 50 0Z" fill="#34798D"/></svg>
+    <svg class="shine-ft" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M50 0 C50 28 72 50 100 50 C72 50 50 72 50 100 C50 72 28 50 0 50 C28 50 50 28 50 0Z" fill="#34798D"></path></svg>
     <p>Questions? Contact the Clinical Operations team.</p>
   </div>
 </div>
 
-<div class="toast" id="toast">&#10003; Exported successfully</div>
+<div class="toast" id="toast">✓ Exported successfully</div>
 
 <iframe name="hiddenFrame" style="display:none;"></iframe>
   
@@ -1070,8 +1064,7 @@ const SHEETS_URL = "https://script.google.com/macros/s/AKfycbzWp7g0DhXUHL6_-Y-oF
 const scoreMap = {
   w_exam:        {dedicated:2, hygiene_first:1, varies:1, none:0},
   w_perio_new:   {yes:2, sometimes:1, suspected:0, no:0},
-  w_perio_recall:{yes:2, annually:1, concerns:0, no:0},
-  w_diagnosis:   {yes:2, sometimes:1, rarely:0, no:0},
+  w_perio_recall:{yes:2, concerns:0, no:0},
   w_referral:    {yes:2, informal:1, adhoc:0, none:0},
   w_huddle:      {yes:1, sometimes:1, no:0},
 
@@ -1080,9 +1073,7 @@ const scoreMap = {
   m_fun:         {yes:2, sometimes:1, rarely:0, no:0},
   m_est:         {yes:2, sometimes:1, rarely:0, no:0},
   m_comfort:     {yes:2, some:1, no:0},
-  m_context:     {full:2, some:1, minimal:0},
   tp_4d:         {yes:2, partial:1, no:0},
-  tp_doc:        {yes:2, sometimes:1, no:0},
   tp_culture:    {yes:1, sometimes:1, no:0},
 
   ho_formal:     {yes:2, sometimes:1, hallway:0, no:0},
@@ -1100,7 +1091,6 @@ const scoreMap = {
   a_recall:      {strong:2, moderate:1, weak:0, none:0},
 
   a_booking:     {yes:2, partial:1, no:0},
-  a_ar:          {yes:1, moderate:1, no:0},
   a_noshow:      {yes:1, adhoc:1, no:0},
   t_gp:          {no:2, some:1, yes:0},
   t_rdh:         {no:2, some:1, yes:0},
@@ -1112,23 +1102,71 @@ const scoreMap = {
 
 const maxScore = Object.values(scoreMap).reduce((a,m)=>a+Math.max(...Object.values(m)),0);
 
-function calcScore(){
-  let score=0;
-  Object.entries(scoreMap).forEach(([id,map])=>{
-    const el=document.getElementById(id);
-    if(el&&el.value&&map[el.value]!==undefined) score+=map[el.value];
+// ============ DOMAIN RESULTS ============
+// Four independent results. Deliberately NOT combined into one number — a blended
+// score hides which kind of support a practice actually needs.
+// Sections 5-7 (training needs, resources, context) are information gathering, not rated.
+const DOMAINS = [
+  { key:'Diagnosis',      label:'Diagnosis &amp; Treatment Planning', sections:'1a–1c',
+    fields:['w_exam','w_perio_new','w_perio_recall','w_referral','i_records','i_digital',
+            'm_bac','m_str','m_fun','m_est','m_comfort','tp_4d','tp_culture'] },
+  { key:'Communication',  label:'Communication', sections:'2',
+    fields:['ho_protocol','ho_formal','ho_reinforce','ho_seed'] },
+  { key:'Infrastructure', label:'Infrastructure', sections:'3',
+    fields:['i_assist','i_supplies','i_equip','w_huddle'] },
+  { key:'AdminSupport',   label:'Admin Support', sections:'4',
+    fields:['a_admin','a_recall','a_booking','a_noshow'] }
+];
+
+// i_equip has no entry in scoreMap; give it one for domain purposes.
+const domainScoreMap = Object.assign({}, scoreMap, {
+  i_equip: {yes:2, mostly:1, gaps:0, no:0}
+});
+
+function statusFor(pct){
+  if(pct===null) return {text:'Not yet answered', colour:'rgba(255,255,255,.35)', sub:''};
+  if(pct>=80)    return {text:'Established',      colour:'#6FBF8B', sub:'Foundations are in place'};
+  if(pct>=50)    return {text:'Developing',       colour:'#E8B84B', sub:'Some strengths, uneven in places'};
+  return               {text:'Support recommended',colour:'#E89B7A', sub:'A good area to build together'};
+}
+
+function computeDomains(){
+  return DOMAINS.map(d=>{
+    let got=0, max=0, answered=0;
+    d.fields.forEach(id=>{
+      const map = domainScoreMap[id];
+      const el  = document.getElementById(id);
+      if(!map||!el) return;
+      max += Math.max(...Object.values(map));
+      if(el.value && map[el.value]!==undefined){ got += map[el.value]; answered++; }
+    });
+    const pct = (answered===0||max===0) ? null : Math.round(got/max*100);
+    return Object.assign({}, d, {pct, answered, total:d.fields.length, status:statusFor(pct)});
   });
-  const pct=Math.round(score/maxScore*100);
-  document.getElementById('sv').textContent=pct+'%';
-  let label='', fill='';
-  if(pct>=80){label='Ready: strong foundations in place.';fill='#4a9460';}
-  else if(pct>=60){label='Good progress: a few areas to strengthen before the specialist begins.';fill='#d4930a';}
-  else if(pct>=40){label='Support needed: some foundational areas to build before integration.';fill='#c0392b';}
-  else{label='Early stage: foundational workflow and infrastructure to be established.';fill='#c0392b';}
-  document.getElementById('ss').textContent=`${score} / ${maxScore} points`;
-  document.getElementById('sfill').style.width=pct+'%';
-  document.getElementById('sfill').style.background=fill;
-  document.getElementById('slbl').textContent=label;
+}
+
+function calcScore(){
+  const results = computeDomains();
+  const anyFilled = results.some(r=>r.answered>0);
+  const grid = document.getElementById('domain-grid');
+
+  document.getElementById('slbl').textContent = anyFilled
+    ? 'Each area below stands on its own — they are not combined into a single score, because the kind of support a practice needs differs by area.'
+    : 'Complete the form to see where support may be helpful.';
+
+  if(!anyFilled){ grid.style.display='none'; grid.innerHTML=''; return; }
+
+  grid.style.display='grid';
+  grid.innerHTML = results.map(r=>{
+    const partial = (r.answered>0 && r.answered<r.total)
+      ? `<div class="domain-sub">${r.answered} of ${r.total} answered</div>` : '';
+    const sub = r.status.sub ? `<div class="domain-sub">${r.status.sub}</div>` : '';
+    return `<div class="domain-tile" style="border-left-color:${r.status.colour}">
+        <div class="domain-name">${r.label}<br><span style="opacity:.7;font-weight:400">Section ${r.sections}</span></div>
+        <div class="domain-status" style="color:${r.status.colour}">${r.status.text}</div>
+        ${sub}${partial}
+      </div>`;
+  }).join('');
 }
 
 function update(){
@@ -1208,18 +1246,13 @@ function buildPriorityActions(){
   // Perio charting - new patient
   const perioNew = val('w_perio_new');
   if(perioNew==='no'||perioNew==='suspected'){
-    actions.push({priority:'high', section:'Workflow', text:'Implement 6-point perio charting at every new patient exam across all providers. This is the clinical foundation for identifying periodontist referrals.'});
+    actions.push({priority:'high', section:'Workflow', text:'Implement complete perio charting for diagnosis at every new patient exam across all providers. This is the clinical foundation for identifying periodontist referrals.'});
   }
 
-  // Perio charting - recall
+  // Perio charting - annual update
   const perioRecall = val('w_perio_recall');
-  if(perioRecall==='no'){ actions.push({priority:'high', section:'Workflow', text:'Establish a protocol for updating perio charting at every recall exam. Annual or reactive charting will limit the specialist\'s referral pipeline.'}); }
-  else if(perioRecall==='concerns'||perioRecall==='annually'){ actions.push({priority:'medium', section:'Workflow', text:'Move perio charting at recall from annual/reactive to every appointment — this is especially important once a periodontist is in the practice.'}); }
-
-  // Diagnosis documentation
-  const diag = val('w_diagnosis');
-  if(diag==='rarely'||diag==='no'){ actions.push({priority:'high', section:'Workflow', text:'Build the habit of documenting a comprehensive diagnosis before treatment planning across all providers — this is a prerequisite for meaningful specialist referrals.'}); }
-  else if(diag==='sometimes'){ actions.push({priority:'medium', section:'Workflow', text:'Work toward consistent pre-treatment diagnosis documentation across all providers, not just some.'}); }
+  if(perioRecall==='no'){ actions.push({priority:'high', section:'Workflow', text:'Establish a protocol for updating perio charting annually. Reactive charting will limit the specialist\'s referral pipeline.'}); }
+  else if(perioRecall==='concerns'){ actions.push({priority:'medium', section:'Workflow', text:'Move perio charting from reactive to a routine annual update — this is especially important once a periodontist is in the practice.'}); }
 
   // Admin - dedicated vs shared
   const admin = val('a_admin');
@@ -1240,19 +1273,10 @@ function buildPriorityActions(){
   const noshow = val('a_noshow');
   if(noshow==='no'){ actions.push({priority:'medium', section:'Admin', text:'Establish a re-engagement protocol for patients who cancel or no-show specialist appointments. Without this, gaps in the schedule compound quickly.'}); }
 
-  // AR
-  const ar = val('a_ar');
-  if(ar==='no'){ actions.push({priority:'medium', section:'Admin', text:'Activate AR management for specialist billing — unmanaged accounts receivable will create cash flow issues as specialist volume grows.'}); }
-
   // GP comfort with specialty conversations
   const comfort = val('m_comfort');
   if(comfort==='no'){ actions.push({priority:'high', section:'Clinical Culture', text:'Prioritize GP coaching on initiating specialty conversations with patients before integration — GPs who avoid this topic will suppress referral volume significantly.'}); }
   else if(comfort==='some'){ actions.push({priority:'medium', section:'Clinical Culture', text:'Provide communication coaching for GPs who are not yet comfortable initiating specialty conversations with patients.'}); }
-
-  // Clinical context with referral
-  const context = val('m_context');
-  if(context==='minimal'){ actions.push({priority:'high', section:'Clinical Culture', text:'Establish a standard for what clinical context must travel with every referral: documented diagnosis, key clinical findings, and confirmation that the patient has been briefed.'}); }
-  else if(context==='some'){ actions.push({priority:'medium', section:'Clinical Culture', text:'Improve the completeness of clinical context sent with each referral — partial notes and unprepared patients reduce case acceptance at the specialist level.'}); }
 
   // Focus areas (lens)
   ['m_bac','m_str','m_fun','m_est'].forEach(id=>{
@@ -1268,19 +1292,16 @@ function buildPriorityActions(){
   if(tp4d==='no'){ actions.push({priority:'medium', section:'Treatment Planning', text:'Introduce the four-step treatment planning framework (Data, Diagnosis, Discussion, Documentation) to the GP team before integration. Without it, specialty options are regularly missed in treatment presentations.'}); }
   else if(tp4d==='partial'){ actions.push({priority:'medium', section:'Treatment Planning', text:'Extend the four-step treatment planning framework to all GPs — partial adoption means patients seen by some providers are not hearing about specialty options.'}); }
 
-  const tpDoc = val('tp_doc');
-  if(tpDoc==='no'){ actions.push({priority:'medium', section:'Treatment Planning', text:'Build the habit of documenting the treatment plan in the patient chart before presenting to the patient — this supports consistency, accountability, and informed consent.'}); }
-
   // Handoff
   const hoFormal = val('ho_formal');
-  if(hoFormal==='no'||hoFormal==='hallway'){ actions.push({priority:'high', section:'Recall Handoff', text:'Establish a formal in-room hygienist-to-dentist handoff at every recall appointment. This is one of the highest-leverage moments for seeding specialist referrals naturally.'}); }
-  else if(hoFormal==='sometimes'){ actions.push({priority:'medium', section:'Recall Handoff', text:'Drive consistency in the in-room recall handoff — occasional execution means referral opportunities are missed on days when it does not happen.'}); }
+  if(hoFormal==='no'||hoFormal==='hallway'){ actions.push({priority:'high', section:'Hygiene Handoff', text:'Establish a formal in-room hygienist-to-dentist handoff at every appointment. This is one of the highest-leverage moments for seeding specialist referrals naturally.'}); }
+  else if(hoFormal==='sometimes'){ actions.push({priority:'medium', section:'Hygiene Handoff', text:'Drive consistency in the in-room handoff — occasional execution means referral opportunities are missed on days when it does not happen.'}); }
 
   const hoProtocol = val('ho_protocol');
-  if(hoProtocol==='no'){ actions.push({priority:'medium', section:'Recall Handoff', text:'Document and agree on a standardized recall handoff protocol with the hygiene and dentist teams. A written protocol drives consistency far more reliably than verbal agreements.'}); }
+  if(hoProtocol==='no'){ actions.push({priority:'medium', section:'Hygiene Handoff', text:'Document and agree on a standardized handoff protocol with the hygiene and dentist teams. A written protocol drives consistency far more reliably than verbal agreements.'}); }
 
   const hoSeed = val('ho_seed');
-  if(hoSeed==='no'){ actions.push({priority:'medium', section:'Recall Handoff', text:'Coach hygienists to identify and flag specialty referral needs during the hygiene appointment, before the dentist arrives. This primes the patient and makes the referral conversation easier.'}); }
+  if(hoSeed==='no'){ actions.push({priority:'medium', section:'Hygiene Handoff', text:'Coach hygienists to identify and flag specialty referral needs during the hygiene appointment, before the dentist arrives. This primes the patient and makes the referral conversation easier.'}); }
 
   // Training gaps
   const tGP = val('t_gp');
@@ -1329,12 +1350,13 @@ function buildPriorityActions(){
   }
 
   readyMsg.style.display='none';
+  window.__lastActionCount = actions.length;
   const highActions = actions.filter(a=>a.priority==='high');
   const medActions  = actions.filter(a=>a.priority==='medium');
 
   let html='';
   if(highActions.length){
-    html+='<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#c0392b;margin-bottom:8px">Critical — address before the specialist begins</div>';
+    html+='<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#c0392b;margin-bottom:8px">Support recommended before the specialist begins</div>';
     html+=highActions.map((a,i)=>`
       <div style="display:flex;gap:12px;padding:10px 14px;margin-bottom:8px;background:#fdf0f0;border:1px solid #f0b8b8;border-left:3px solid #c0392b;border-radius:7px;font-size:13px;color:#5a1a1a;line-height:1.55">
         <span style="font-weight:700;flex-shrink:0;color:#c0392b">${i+1}.</span>
@@ -1343,7 +1365,7 @@ function buildPriorityActions(){
   }
   if(medActions.length){
     const offset = highActions.length;
-    html+=`<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#d4930a;margin-bottom:8px;${highActions.length?'margin-top:16px':''}">Recommended — strengthen before or shortly after integration</div>`;
+    html+=`<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#d4930a;margin-bottom:8px;${highActions.length?'margin-top:16px':''}">Areas to strengthen before or shortly after integration</div>`;
     html+=medActions.map((a,i)=>`
       <div style="display:flex;gap:12px;padding:10px 14px;margin-bottom:8px;background:#FEF6E4;border:1px solid #f0c96a;border-left:3px solid #d4930a;border-radius:7px;font-size:13px;color:#6b4800;line-height:1.55">
         <span style="font-weight:700;flex-shrink:0;color:#d4930a">${offset+i+1}.</span>
@@ -1356,12 +1378,12 @@ function buildPriorityActions(){
   // ---- SUPPORT REQUESTED BLOCK ----
   const supportMap = {
     ts1:  'Referral trigger training for GPs',
-    ts2:  'Hygiene coaching on flagging specialty needs at recall',
+    ts2:  'Hygiene coaching on flagging specialty needs at appointments',
     ts3:  'Admin workflow and specialist booking training',
     ts4:  'Case acceptance and patient communication coaching',
-    ts5:  'Morning huddle structure and specialist identification',
+    ts5:  'Daily huddle structure and specialist identification',
     ts6:  'Four diagnostic focus area coaching (bacterial, structural, functional, esthetic)',
-    ts7:  'Hygienist-to-dentist recall handoff protocol',
+    ts7:  'Hygienist-to-dentist handoff protocol',
     ts9:  'The four-step treatment planning framework (4 Ds)',
     ts10: 'None — team is ready'
   };
@@ -1470,7 +1492,6 @@ async function exportPDF() {
     document.body.classList.remove('pdf-export');
   }
 }
-``
 // ============ REFERRAL TRIGGER TABS ============
 function showSpec(spec){
   document.querySelectorAll('.rt-panel').forEach(p=>p.style.display='none');
@@ -1486,10 +1507,9 @@ function clearForm(){
   document.querySelectorAll('input[type=text],input[type=email],textarea').forEach(i=>i.value='');
   document.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);
   document.querySelectorAll('.qa').forEach(q=>q.style.display='none');
-  document.getElementById('sv').textContent='—';
-  document.getElementById('ss').textContent='Complete the form to see your score';
-  document.getElementById('sfill').style.width='0%';
-  document.getElementById('slbl').textContent='';
+  window.__lastActionCount = 0;
+  document.getElementById('slbl').textContent='Complete the form to see where support may be helpful.';
+  const dg=document.getElementById('domain-grid'); dg.style.display='none'; dg.innerHTML='';
   document.getElementById('priority-card').style.display='none';
   document.getElementById('priority-list').innerHTML='';
   document.getElementById('priority-ready').style.display='none';
@@ -1562,8 +1582,26 @@ async function confirmSubmit() {
 
   
 async function submitToSharePoint(submissionId, userEmail) {
-  const scoreText = document.getElementById("sv").textContent;
-  const score = parseInt(scoreText.replace('%','')) || 0;
+  // Four independent domain results — these are what let the team spot patterns
+  // across clinics (e.g. "11 of 19 need Diagnosis support" = build one workshop).
+  const domains = computeDomains();
+  const dget = k => domains.find(d => d.key === k) || {};
+
+  // Support explicitly requested by the practice, as a delimited list.
+  const supportLabels = {
+    ts1:'Referral trigger training for GPs',
+    ts2:'Hygiene coaching on flagging specialty needs at appointments',
+    ts3:'Admin workflow and specialist booking training',
+    ts4:'Case acceptance and patient communication coaching',
+    ts5:'Daily huddle structure and specialist identification',
+    ts6:'Four diagnostic focus area coaching',
+    ts7:'Hygienist-to-dentist handoff protocol',
+    ts9:'Four-step treatment planning framework (4 Ds)',
+    ts10:'None — team is ready'
+  };
+  const requested = Object.entries(supportLabels)
+    .filter(([id]) => { const el = document.getElementById(id); return el && el.checked; })
+    .map(([, label]) => label);
 
   const payload = {
     action: "submitAssessment",
@@ -1573,8 +1611,22 @@ async function submitToSharePoint(submissionId, userEmail) {
     PracticeName: document.getElementById("pname").value || "",
     PracticeCode: document.getElementById("cn").value || "",
     Specialty: document.getElementById("sp").value || "",
-    TotalScore: score,
     UserEmail: userEmail || "",
+
+    // Domain results — status text for reporting, percent for sorting
+    DiagnosisStatus:       dget('Diagnosis').status ? dget('Diagnosis').status.text : "",
+    DiagnosisPct:          dget('Diagnosis').pct !== null ? dget('Diagnosis').pct : "",
+    CommunicationStatus:   dget('Communication').status ? dget('Communication').status.text : "",
+    CommunicationPct:      dget('Communication').pct !== null ? dget('Communication').pct : "",
+    InfrastructureStatus:  dget('Infrastructure').status ? dget('Infrastructure').status.text : "",
+    InfrastructurePct:     dget('Infrastructure').pct !== null ? dget('Infrastructure').pct : "",
+    AdminSupportStatus:    dget('AdminSupport').status ? dget('AdminSupport').status.text : "",
+    AdminSupportPct:       dget('AdminSupport').pct !== null ? dget('AdminSupport').pct : "",
+
+    // What the practice asked for, and how many auto-flagged areas surfaced
+    SupportRequested:      requested.join('; '),
+    SupportRequestedCount: requested.length,
+    FlaggedAreaCount:      (window.__lastActionCount || 0),
 
     AdditionalContext: document.getElementById("additional_context").value || "",
 
@@ -1582,7 +1634,6 @@ async function submitToSharePoint(submissionId, userEmail) {
     w_exam: document.getElementById("w_exam").value || "",
     w_perio_new: document.getElementById("w_perio_new").value || "",
     w_perio_recall: document.getElementById("w_perio_recall").value || "",
-    w_diagnosis: document.getElementById("w_diagnosis").value || "",
     w_referral: document.getElementById("w_referral").value || "",
     w_huddle: document.getElementById("w_huddle").value || "",
 
@@ -1592,11 +1643,9 @@ async function submitToSharePoint(submissionId, userEmail) {
     m_fun: document.getElementById("m_fun").value || "",
     m_est: document.getElementById("m_est").value || "",
     m_comfort: document.getElementById("m_comfort").value || "",
-    m_context: document.getElementById("m_context").value || "",
 
     // Treatment Planning
     tp_4d: document.getElementById("tp_4d").value || "",
-    tp_doc: document.getElementById("tp_doc").value || "",
     tp_culture: document.getElementById("tp_culture").value || "",
 
     // Handoff
@@ -1616,7 +1665,6 @@ async function submitToSharePoint(submissionId, userEmail) {
     a_admin: document.getElementById("a_admin").value || "",
     a_recall: document.getElementById("a_recall").value || "",
     a_booking: document.getElementById("a_booking").value || "",
-    a_ar: document.getElementById("a_ar").value || "",
     a_noshow: document.getElementById("a_noshow").value || "",
 
     // Training
@@ -1625,7 +1673,8 @@ async function submitToSharePoint(submissionId, userEmail) {
     t_admin: document.getElementById("t_admin").value || "",
     t_comm: document.getElementById("t_comm").value || "",
     t_pillars: document.getElementById("t_pillars").value || "",
-    t_huddle: document.getElementById("t_huddle").value || ""
+    t_huddle: document.getElementById("t_huddle").value || "",
+    t_handoff: document.getElementById("t_handoff").value || ""
   };
 
   await fetch(SHEETS_URL, {
@@ -1660,26 +1709,15 @@ async function submitToSharePoint(submissionId, userEmail) {
       <label for="userEmail" style="font-size:12px; font-weight:600; color:var(--text-secondary); letter-spacing:.01em;">
         Email address <span style="color:var(--atlantic);">*</span>
       </label>
-      <input
-        type="email"
-        id="userEmail"
-        placeholder="your@email.com"
-        style="font-family:var(--sans); font-size:14px; padding:10px 12px; border:1px solid #ccc8be; border-radius:6px; background:var(--latte); color:var(--text-primary); width:100%;"
-      >
+      <input type="email" id="userEmail" placeholder="your@email.com" style="font-family:var(--sans); font-size:14px; padding:10px 12px; border:1px solid #ccc8be; border-radius:6px; background:var(--latte); color:var(--text-primary); width:100%;">
     </div>
 
     <div style="display:flex; gap:10px; justify-content:flex-start; align-items:center;">
-      <button
-        onclick="confirmSubmit()"
-        style="display:inline-flex; align-items:center; justify-content:center; padding:11px 20px; background:var(--atlantic); color:var(--white); border:none; border-radius:7px; font-family:var(--sans); font-size:14px; font-weight:700; cursor:pointer;"
-      >
+      <button onclick="confirmSubmit()" style="display:inline-flex; align-items:center; justify-content:center; padding:11px 20px; background:var(--atlantic); color:var(--white); border:none; border-radius:7px; font-family:var(--sans); font-size:14px; font-weight:700; cursor:pointer;">
         Submit
       </button>
 
-      <button
-        onclick="closeModal()"
-        style="display:inline-flex; align-items:center; justify-content:center; padding:11px 18px; background:var(--white); color:var(--text-secondary); border:1px solid #ccc8be; border-radius:7px; font-family:var(--sans); font-size:14px; cursor:pointer;"
-      >
+      <button onclick="closeModal()" style="display:inline-flex; align-items:center; justify-content:center; padding:11px 18px; background:var(--white); color:var(--text-secondary); border:1px solid #ccc8be; border-radius:7px; font-family:var(--sans); font-size:14px; cursor:pointer;">
         Cancel
       </button>
     </div>
@@ -1687,4 +1725,5 @@ async function submitToSharePoint(submissionId, userEmail) {
 </div>
 
   
-</body>
+
+</body></html>
